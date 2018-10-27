@@ -6,17 +6,14 @@ import ug.gauss.datatypes.FractionComp;
 
 public class Main {
 
-    static int randomNumber(int seed)
-    {
-        Random random = new Random();
-        return random.ints(-65536,(65536)).findFirst().getAsInt();
-    }
-
 
     public static void main(String[] args) {
 
+        int seed = 1;
+        int size = 20;
+        Randomizer rand = new Randomizer(seed);
         MyMatrix<FractionComp> mm = new MyMatrix<FractionComp>();
-        System.out.println(Main.randomNumber(1));
-
+        System.out.println(rand.randomNumber());
+        System.out.println(rand.randomNumber());
     }
 }
