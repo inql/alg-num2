@@ -15,11 +15,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         }
     }
 
-
-    @Override
-    public double estimate() {
-        return 0;
-    }
+    Fract fract;
 
     @Override
     public Fract getValue() {
