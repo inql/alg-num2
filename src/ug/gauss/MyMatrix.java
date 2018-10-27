@@ -43,6 +43,16 @@ public class MyMatrix<T extends MatrixCompatible> {
         }
     }
 
+    public T getValue(int columnNo, int rowNo){
+        try{
+            if(columnNo<=0 || rowNo<=0)
+                throw new NullPointerException();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        return matrix [rows[rowNo-1]][columns[columnNo-1]];
+    }
+
 
 
 }
