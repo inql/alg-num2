@@ -39,4 +39,9 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
     public void divide(FloatComp floatComp) {
         this.value/=floatComp.getValue();
     }
+
+    @Override
+    public String toString() {
+        return Float.toString(value);
+    }
 }

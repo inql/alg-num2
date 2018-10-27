@@ -37,4 +37,9 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double> {
     public void divide(DoubleComp doubleComp) {
         this.value/=doubleComp.getValue();
     }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
+    }
 }
