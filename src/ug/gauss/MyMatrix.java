@@ -2,6 +2,8 @@ package ug.gauss;
 
 import ug.gauss.datatypes.MatrixCompatible;
 
+import java.util.Arrays;
+
 
 public class MyMatrix<T extends MatrixCompatible> {
 
@@ -12,8 +14,8 @@ public class MyMatrix<T extends MatrixCompatible> {
 
     public MyMatrix(T[][] matrix) {
         this.matrix = matrix;
-        rows = new int[matrix.length-1];
-        columns = new int[matrix.length-1];
+        rows = new int[matrix.length];
+        columns = new int[matrix.length];
         for(int i=0; i<matrix.length; i++){
             rows[i] = i+1;
             columns[i] = i+1;
@@ -35,24 +37,41 @@ public class MyMatrix<T extends MatrixCompatible> {
             toSwap = rows;
         else
             toSwap = columns;
+        int fromIndex = 0;
+        int toIndex = 0;
         for (int i =0; i<toSwap.length; i++){
             if(toSwap[i]==from)
-                toSwap[i] = to;
+                fromIndex = i;
             if(toSwap[i]==to)
-                toSwap[i] = from;
+                toIndex = i;
         }
+        toSwap[fromIndex] = to;
+        toSwap[toIndex] = from;
     }
 
-    public T getValue(int columnNo, int rowNo){
+    public T getValue(int rowNo, int columnNo){
         try{
             if(columnNo<=0 || rowNo<=0)
                 throw new NullPointerException();
         }catch(NullPointerException e){
             e.printStackTrace();
         }
-        return matrix [rows[rowNo-1]][columns[columnNo-1]];
+        return matrix [rows[rowNo-1]-1][columns[columnNo-1]-1];
     }
 
-
-
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for(int i =0; i<matrix.length; i++){
+                result.append("[");
+            for(int j=0; j<matrix.length; j++){
+                result.append(this.getValue(i+1,j+1));
+                if(j<matrix.length-1){
+                    result.append(", ");
+                }
+            }
+            result.append("]\n");
+        }
+        return result.toString();
+    }
 }
