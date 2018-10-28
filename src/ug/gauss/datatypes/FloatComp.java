@@ -1,6 +1,6 @@
 package ug.gauss.datatypes;
 
-public class FloatComp implements MatrixCompatible<FloatComp,Float> {
+public class FloatComp implements MatrixCompatible<FloatComp,Float>{
 
 
     private float value;
@@ -15,7 +15,7 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
 
     }
 
-    public FloatComp clonexD(){
+    public FloatComp clone(){
         FloatComp  cloned = new FloatComp();
         cloned.setValue(this.getValue());
         return cloned;
@@ -63,5 +63,19 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
     @Override
     public String toString() {
         return Float.toString(value);
+    }
+
+        /*
+
+    If the FloatComp is equal to the argument then 0 is returned.
+    If the FloatComp is less than the argument then -1 is returned.
+    If the FloatComp is greater than the argument then 1 is returned.
+
+     */
+
+
+    @Override
+    public int compareTo(FloatComp floatComp) {
+        return this.getValue().compareTo(floatComp.getValue());
     }
 }

@@ -19,10 +19,26 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
     }
 
-    public FractionComp clonexD(){
+    public FractionComp clone(){
         FractionComp cloned = new FractionComp();
         cloned.setValue(new Fract(this.fract.nominator,this.fract.denominator));
         return cloned;
+    }
+
+    /*
+
+    If the FractionComp is equal to the argument then 0 is returned.
+    If the FractionComp is less than the argument then -1 is returned.
+    If the FractionComp is greater than the argument then 1 is returned.
+
+     */
+
+    @Override
+    public int compareTo(FractionComp fractionComp) {
+
+        //todo: mateusz wajche przeluz
+
+        return 0;
     }
 
     Fract fract;

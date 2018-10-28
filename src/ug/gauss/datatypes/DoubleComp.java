@@ -1,6 +1,6 @@
 package ug.gauss.datatypes;
 
-public class DoubleComp implements MatrixCompatible<DoubleComp,Double> {
+public class DoubleComp implements MatrixCompatible<DoubleComp,Double>{
 
     private double value;
 
@@ -56,9 +56,21 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double> {
         return Double.toString(value);
     }
 
-    public DoubleComp clonexD(){
+    public DoubleComp clone(){
         DoubleComp cloned = new DoubleComp();
         cloned.setValue(this.getValue());
         return cloned;
+    }
+    /*
+
+    If the DoubleComp is equal to the argument then 0 is returned.
+    If the DoubleComp is less than the argument then -1 is returned.
+    If the DoubleComp is greater than the argument then 1 is returned.
+
+     */
+
+    @Override
+    public int compareTo(DoubleComp doubleComp) {
+        return this.getValue().compareTo(doubleComp.getValue());
     }
 }
