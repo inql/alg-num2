@@ -15,7 +15,7 @@ public class Randomizer {
         random = new Random();
     }
 
-    int randomNumber()
+    public int randomNumber()
     {
         return random.ints(-65536,(65536)).findFirst().getAsInt();
     }

@@ -8,6 +8,8 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double> {
         this.value = (double)value/65536;
     }
 
+    public DoubleComp(double value) {this.value = value;}
+
     @Override
     public Double getValue() {
         return value;
@@ -17,6 +19,8 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double> {
     public void setValue(int value) {
         this.value = (double)value/65536;
     }
+
+    public void setValue(double value){this.value = value;}
 
     @Override
     public void add(DoubleComp doubleComp) {

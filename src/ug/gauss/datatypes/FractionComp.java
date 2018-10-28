@@ -17,8 +17,6 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
     Fract fract;
 
-
-
     @Override
     public Fract getValue() {
         return null;
@@ -29,10 +27,15 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         //todo: implement setValue
     }
 
-    public FractionComp(BigInteger nominator, BigInteger denominator)
+    public FractionComp(BigInteger nominator)
     {
-        fract = new Fract(nominator, denominator);
-        Simplify();
+        fract = new Fract(nominator, new BigInteger(String.valueOf(65536)));
+        simplify();
+    }
+
+    public FractionComp(BigInteger nominator, BigInteger denominator){
+        fract = new Fract(nominator,denominator);
+        simplify();
     }
 
     @Override
@@ -44,7 +47,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         fract.nominator = fract.nominator.multiply(pom.divide(fract.denominator));
         fract.denominator = pom;
         fract.nominator = fract.nominator.add(fractionComp.fract.nominator);
-        Simplify();
+        simplify();
 
     }
 
@@ -57,7 +60,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         fract.nominator = fract.nominator.multiply(pom.divide(fract.denominator));
         fract.denominator = pom;
         fract.nominator = fract.nominator.subtract(fractionComp.fract.nominator);
-        Simplify();
+        simplify();
     }
 
     @Override
@@ -65,7 +68,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
         this.fract.nominator = this.fract.nominator.multiply(fractionComp.fract.nominator);
         this.fract.denominator = this.fract.denominator.multiply(fractionComp.fract.denominator);
-        Simplify();
+        simplify();
     }
 
     @Override
@@ -102,7 +105,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         return a.divide(NWD(a,b)).multiply(b);
     }
 
-    private void Simplify()
+    private void simplify()
     {
         BigInteger a = NWD(fract.nominator,fract.denominator);
         fract.nominator = fract.nominator.divide(a);

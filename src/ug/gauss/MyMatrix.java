@@ -2,7 +2,8 @@ package ug.gauss;
 
 import ug.gauss.datatypes.MatrixCompatible;
 
-import java.util.Arrays;
+import java.lang.reflect.Array;
+import java.util.stream.IntStream;
 
 
 public class MyMatrix<T extends MatrixCompatible> {
@@ -14,21 +15,8 @@ public class MyMatrix<T extends MatrixCompatible> {
 
     public MyMatrix(T[][] matrix) {
         this.matrix = matrix;
-        rows = new int[matrix.length];
-        columns = new int[matrix.length];
-        for(int i=0; i<matrix.length; i++){
-            rows[i] = i+1;
-            columns[i] = i+1;
-        }
-    }
-
-    public MyMatrix(){
-        rows = new int[10];
-        columns = new int[10];
-        for(int i=0; i<10; i++){
-            rows[i] = i+1;
-            columns[i] = i+1;
-        }
+        rows = IntStream.rangeClosed(1,matrix.length+1).toArray();
+        columns = IntStream.rangeClosed(1,matrix[0].length+1).toArray();
     }
 
     public void swap(int from, int to, Swapper swapper){
@@ -64,9 +52,9 @@ public class MyMatrix<T extends MatrixCompatible> {
         StringBuilder result = new StringBuilder();
         for(int i =0; i<matrix.length; i++){
                 result.append("[");
-            for(int j=0; j<matrix.length; j++){
+            for(int j=0; j<matrix[i].length; j++){
                 result.append(this.getValue(i+1,j+1));
-                if(j<matrix.length-1){
+                if(j<matrix[i].length-1){
                     result.append(", ");
                 }
             }

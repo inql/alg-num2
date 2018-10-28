@@ -9,6 +9,7 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
         this.value = (float)value/65536;
     }
 
+    public FloatComp(float value) {this.value = value;}
 
     @Override
     public Float getValue() {
@@ -19,6 +20,9 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
     public void setValue(int value) {
         this.value = (float)value/65536;
     }
+
+    public void setValue(float value) {this.value = value;}
+
 
     @Override
     public void add(FloatComp floatComp) {
