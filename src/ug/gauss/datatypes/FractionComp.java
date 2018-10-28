@@ -33,13 +33,6 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
      */
 
-    @Override
-    public int compareTo(FractionComp fractionComp) {
-
-        //todo: mateusz wajche przeluz
-
-        return 0;
-    }
 
     Fract fract;
 
@@ -61,6 +54,10 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
     public FractionComp(BigInteger nominator)
     {
         this(nominator,new BigInteger("65536"));
+    }
+
+    public FractionComp(int nominator) {
+        this(new BigInteger(Integer.toString(nominator)),new BigInteger("65536"));
     }
 
     public FractionComp(BigInteger nominator, BigInteger denominator){
@@ -119,6 +116,17 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
     public String toString()
     {
         return fract.nominator.toString() + " / " + fract.denominator.toString();
+    }
+
+    @Override
+    public int compareTo(FractionComp fractionComp)
+    {
+        BigInteger pom = NWW(fractionComp.fract.denominator, fract.denominator);
+        BigInteger a = fractionComp.fract.nominator.multiply(pom.divide(fractionComp.fract.denominator));
+        BigInteger b = this.fract.nominator.multiply(pom.divide(this.fract.denominator));
+        return b.compareTo(a);
+
+
     }
 
     private BigInteger NWD(BigInteger a, BigInteger b)

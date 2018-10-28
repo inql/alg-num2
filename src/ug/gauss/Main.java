@@ -44,5 +44,17 @@ public class Main {
         System.out.println(pierwsza.compareTo(druga));
         System.out.println(druga.compareTo(pierwsza));
         System.out.println(pierwsza.compareTo(trzecia));
+
+        // a tu ode
+
+        FractionComp p = new FractionComp(10);
+        FractionComp d = new FractionComp(12);
+        FractionComp t = new FractionComp(10);
+
+        System.out.println(p.compareTo(d));
+        System.out.println(d.compareTo(p));
+        System.out.println(p.compareTo(t));
+
+
     }
 }
