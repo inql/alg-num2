@@ -24,7 +24,8 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
     @Override
     public void setValue(int value) {
-        //todo: implement setValue
+        fract.nominator = new BigInteger(Integer.toString(value));
+
     }
 
     public FractionComp(BigInteger nominator)

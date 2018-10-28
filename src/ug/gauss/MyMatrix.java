@@ -47,6 +47,11 @@ public class MyMatrix<T extends MatrixCompatible> {
         return matrix [rows[rowNo-1]-1][columns[columnNo-1]-1];
     }
 
+    public void setValue(int rowNo, int columnNo, T value)
+    {
+        matrix [rows[rowNo-1]-1][columns[columnNo-1]-1] = value;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
