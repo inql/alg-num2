@@ -10,7 +10,7 @@ public class MatrixCompatibleFactory {
         this.dataType = dataType;
     }
 
-    public MatrixCompatible create(BigInteger value){
+    public MatrixCompatible createWithNominator(BigInteger value){
         if(dataType == DataType.FLOAT){
             return new FloatComp(value.intValue());
         }
@@ -19,6 +19,21 @@ public class MatrixCompatibleFactory {
         }
         else if(dataType == DataType.FRACTION){
             return new FractionComp(value);
+        }
+        else{
+            return null;
+        }
+    }
+
+    public MatrixCompatible createWithDenominator(BigInteger nominator, BigInteger denominator){
+        if(dataType == DataType.FLOAT){
+            return new FloatComp(nominator.intValue(),denominator.intValue());
+        }
+        else if(dataType == DataType.DOUBLE){
+            return new DoubleComp(nominator.intValue(),denominator.intValue());
+        }
+        else if(dataType == DataType.FRACTION){
+            return new FractionComp(nominator,denominator);
         }
         else{
             return null;

@@ -29,8 +29,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
     public FractionComp(BigInteger nominator)
     {
-        fract = new Fract(nominator, new BigInteger(String.valueOf(65536)));
-        simplify();
+        this(nominator,new BigInteger("65536"));
     }
 
     public FractionComp(BigInteger nominator, BigInteger denominator){

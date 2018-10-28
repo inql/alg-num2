@@ -5,11 +5,12 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
 
     private float value;
 
+    public FloatComp(int nominator, int denominator) {this.value = (float)nominator/denominator;}
+
     public FloatComp(int value) {
-        this.value = (float)value/65536;
+        this(value,65536);
     }
 
-    public FloatComp(float value) {this.value = value;}
 
     @Override
     public Float getValue() {

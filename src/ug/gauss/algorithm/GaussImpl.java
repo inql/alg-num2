@@ -22,12 +22,12 @@ public class GaussImpl {
     public MatrixCompatible[] gauss() {
         int n = 10;
         MatrixCompatible[] resultVector = matrixCompatibleFactory.createArray(n);
-        MatrixCompatible m = matrixCompatibleFactory.create(new BigInteger("0"));
+        MatrixCompatible m = matrixCompatibleFactory.createWithNominator(new BigInteger("0"));
 
 
         //todo: oskar zrub
         for (int i =0; i<n; i++){
-            resultVector[i] = matrixCompatibleFactory.create(new BigInteger(String.valueOf(rand.randomNumber())));
+            resultVector[i] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(rand.randomNumber())));
         }
         System.out.println(m);
         return resultVector;
