@@ -15,17 +15,31 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         }
     }
 
+    public FractionComp(){
+
+    }
+
+    public FractionComp clonexD(){
+        FractionComp cloned = new FractionComp();
+        cloned.setValue(new Fract(this.fract.nominator,this.fract.denominator));
+        return cloned;
+    }
+
     Fract fract;
 
     @Override
     public Fract getValue() {
-        return null;
+        return this.fract;
     }
 
     @Override
-    public void setValue(int value) {
+    public FractionComp setValue(int value) {
         fract.nominator = new BigInteger(Integer.toString(value));
+        return this;
+    }
 
+    public void setValue(Fract fract){
+        this.fract = fract;
     }
 
     public FractionComp(BigInteger nominator)
@@ -39,7 +53,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
     }
 
     @Override
-    public void add(FractionComp fractionComp) {
+    public FractionComp add(FractionComp fractionComp) {
 
         BigInteger pom = NWW(fractionComp.fract.denominator, fract.denominator);
 
@@ -48,11 +62,12 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         fract.denominator = pom;
         fract.nominator = fract.nominator.add(fractionComp.fract.nominator);
         simplify();
+        return this;
 
     }
 
     @Override
-    public void substract(FractionComp fractionComp) {
+    public FractionComp substract(FractionComp fractionComp) {
 
         BigInteger pom = NWW(fractionComp.fract.denominator, fract.denominator);
 
@@ -61,23 +76,26 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
         fract.denominator = pom;
         fract.nominator = fract.nominator.subtract(fractionComp.fract.nominator);
         simplify();
+        return this;
     }
 
     @Override
-    public void multiply(FractionComp fractionComp) {
+    public FractionComp multiply(FractionComp fractionComp) {
 
         this.fract.nominator = this.fract.nominator.multiply(fractionComp.fract.nominator);
         this.fract.denominator = this.fract.denominator.multiply(fractionComp.fract.denominator);
         simplify();
+        return this;
     }
 
     @Override
-    public void divide(FractionComp fractionComp) {
+    public FractionComp divide(FractionComp fractionComp) {
 
         BigInteger pom = fractionComp.fract.nominator;
         fractionComp.fract.nominator = fractionComp.fract.denominator;
         fractionComp.fract.denominator = pom;
         multiply(fractionComp);
+        return this;
 
     }
 

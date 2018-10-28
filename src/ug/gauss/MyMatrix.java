@@ -15,8 +15,8 @@ public class MyMatrix<T extends MatrixCompatible> {
 
     public MyMatrix(T[][] matrix) {
         this.matrix = matrix;
-        rows = IntStream.rangeClosed(1,matrix.length+1).toArray();
-        columns = IntStream.rangeClosed(1,matrix[0].length+1).toArray();
+        rows = IntStream.rangeClosed(1,matrix.length).toArray();
+        columns = IntStream.rangeClosed(1,matrix[0].length).toArray();
     }
 
     public void swap(int from, int to, Swapper swapper){

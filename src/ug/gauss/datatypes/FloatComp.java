@@ -11,6 +11,16 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
         this(value,65536);
     }
 
+    public FloatComp(){
+
+    }
+
+    public FloatComp clonexD(){
+        FloatComp  cloned = new FloatComp();
+        cloned.setValue(this.getValue());
+        return cloned;
+    }
+
 
     @Override
     public Float getValue() {
@@ -18,31 +28,36 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float> {
     }
 
     @Override
-    public void setValue(int value) {
+    public FloatComp setValue(int value) {
         this.value = (float)value/65536;
+        return this;
     }
 
     public void setValue(float value) {this.value = value;}
 
 
     @Override
-    public void add(FloatComp floatComp) {
+    public FloatComp add(FloatComp floatComp) {
         this.value+=floatComp.getValue();
+        return this;
     }
 
     @Override
-    public void substract(FloatComp floatComp) {
+    public FloatComp substract(FloatComp floatComp) {
         this.value-=floatComp.getValue();
+        return this;
     }
 
     @Override
-    public void multiply(FloatComp floatComp) {
+    public FloatComp multiply(FloatComp floatComp) {
         this.value*=floatComp.getValue();
+        return this;
     }
 
     @Override
-    public void divide(FloatComp floatComp) {
+    public FloatComp divide(FloatComp floatComp) {
         this.value/=floatComp.getValue();
+        return this;
     }
 
     @Override

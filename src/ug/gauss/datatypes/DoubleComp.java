@@ -10,40 +10,55 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double> {
         this(value,65536);
     }
 
+    public DoubleComp(){
+
+    }
+
     @Override
     public Double getValue() {
         return value;
     }
 
     @Override
-    public void setValue(int value) {
+    public DoubleComp setValue(int value) {
         this.value = (double)value/65536;
+        return this;
     }
 
     public void setValue(double value){this.value = value;}
 
     @Override
-    public void add(DoubleComp doubleComp) {
+    public DoubleComp add(DoubleComp doubleComp) {
         this.value+=doubleComp.getValue();
+        return this;
     }
 
     @Override
-    public void substract(DoubleComp doubleComp) {
+    public DoubleComp substract(DoubleComp doubleComp) {
         this.value-=doubleComp.getValue();
+        return this;
     }
 
     @Override
-    public void multiply(DoubleComp doubleComp) {
+    public DoubleComp multiply(DoubleComp doubleComp) {
         this.value*=doubleComp.getValue();
+        return this;
     }
 
     @Override
-    public void divide(DoubleComp doubleComp) {
+    public DoubleComp divide(DoubleComp doubleComp) {
         this.value/=doubleComp.getValue();
+        return this;
     }
 
     @Override
     public String toString() {
         return Double.toString(value);
+    }
+
+    public DoubleComp clonexD(){
+        DoubleComp cloned = new DoubleComp();
+        cloned.setValue(this.getValue());
+        return cloned;
     }
 }
