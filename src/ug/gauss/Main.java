@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 import ug.gauss.algorithm.GaussImpl;
 import ug.gauss.datatypes.*;
+import ug.gauss.operations.FractionOperation;
 
 public class Main {
 
@@ -41,6 +42,8 @@ public class Main {
         MyMatrix<DoubleComp> vec = new MyMatrix<>(testingVector);
         MyMatrix test2 = fractionCompGauss.multiplyMatrices(compMyMatrix, vec);
         System.out.println(test2);
+
+
 
     }
 }

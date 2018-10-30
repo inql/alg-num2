@@ -2,18 +2,8 @@ package ug.gauss.datatypes;
 
 import java.math.BigInteger;
 
-public class FractionComp implements MatrixCompatible<FractionComp, FractionComp.Fract> {
+public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
 
-
-    class Fract{
-        BigInteger denominator;
-        BigInteger nominator;
-
-        public Fract(BigInteger nominator, BigInteger denominator) {
-            this.denominator = denominator;
-            this.nominator = nominator;
-        }
-    }
 
     public FractionComp(){
 
@@ -44,11 +34,13 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
     @Override
     public FractionComp setValue(int value) {
         fract.nominator = new BigInteger(Integer.toString(value));
+        simplify();
         return this;
     }
 
     public void setValue(Fract fract){
         this.fract = fract;
+        simplify();
     }
 
     public FractionComp(BigInteger nominator)
