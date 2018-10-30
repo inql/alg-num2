@@ -53,4 +53,45 @@ public class GaussImpl {
         return resultVector;
     }
 
+
+    public MyMatrix multiplyMatrices(MyMatrix a, MyMatrix b)
+    {
+        int rowLengthA = a.columns.length;
+        int rowLengthB = b.columns.length;
+        int colLengthA = a.rows.length;
+        int colLengthB = b.rows.length;
+
+        if (rowLengthA != colLengthB)
+            return null;
+        MyMatrix result = new MyMatrix(matrixCompatibleFactory.createMatrix(colLengthA,rowLengthB));
+        // zerowanie tablicy
+        for (int x = 1; x <= colLengthA ; x++)
+        {
+            for (int y = 1; y <= rowLengthB; y++)
+            {
+                    //result[x][y].setValue(x*y);
+                    result.setValue(x,y,matrixCompatibleFactory.createWithNominator(new BigInteger("0")));
+            }
+
+        }
+        MatrixCompatible tempA;
+        MatrixCompatible tempB;
+
+        for (int x = 1; x <= colLengthA ; x++)
+        {
+            for (int y = 1; y <= rowLengthB; y++)
+            {
+                for (int k = 1; k <= rowLengthA; k++)
+                {
+                    tempA = (MatrixCompatible) a.getValue(x,k).clone();
+                    tempB = (MatrixCompatible) b.getValue(k,y).clone();
+                    result.setValue(x,y,(MatrixCompatible)result.getValue(x,y).add(tempA.multiply(tempB)));
+                  //
+                }
+            }
+
+        }
+
+        return result;
+    }
 }

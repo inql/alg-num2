@@ -55,4 +55,19 @@ public class MatrixCompatibleFactory {
         }
     }
 
+    public MatrixCompatible[][] createMatrix(int x, int y){
+        if(dataType == DataType.FLOAT){
+            return new FloatComp[x][y];
+        }
+        else if(dataType == DataType.DOUBLE){
+            return new DoubleComp[x][y];
+        }
+        else if(dataType == DataType.FRACTION){
+            return new FractionComp[x][y];
+        }
+        else{
+            return null;
+        }
+    }
+
 }
