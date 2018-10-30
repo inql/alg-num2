@@ -35,7 +35,7 @@ public class Main {
         }
 
         FractionComp[][] fractionComps = {
-                {new FractionComp(4*65536), new FractionComp(4*65536),new FractionComp(4*65536),new FractionComp(-2*65536),new FractionComp(-2*65536) },
+                {new FractionComp(4*65536), new FractionComp(-2*65536),new FractionComp(4*65536),new FractionComp(-2*65536),new FractionComp(-2*65536) },
                 {new FractionComp(3*65536), new FractionComp(1*65536),new FractionComp(4*65536),new FractionComp(2*65536),new FractionComp(-2*65536) },
                 {new FractionComp(2*65536), new FractionComp(4*65536),new FractionComp(2*65536),new FractionComp(1*65536),new FractionComp(-2*65536) },
                 {new FractionComp(2*65536), new FractionComp(-2*65536),new FractionComp(4*65536),new FractionComp(2*65536),new FractionComp(-2*65536) },
