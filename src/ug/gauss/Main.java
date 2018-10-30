@@ -28,7 +28,7 @@ public class Main {
         MyMatrix<DoubleComp> compMyMatrix = new MyMatrix<>(doubleComps);
         System.out.println(compMyMatrix);
 
-        GaussImpl fractionCompGauss = new GaussImpl(compMyMatrix,new MatrixCompatibleFactory(DataType.DOUBLE));
+        GaussImpl fractionCompGauss = new GaussImpl(compMyMatrix,new MatrixCompatibleFactory(DataType.DOUBLE),new FractionOperation());
 
         /*
         DoubleComp[] result = (DoubleComp[]) fractionCompGauss.gauss();
@@ -39,9 +39,9 @@ public class Main {
 
         DoubleComp[][] testingVector = {{new DoubleComp(4*65536)},{new DoubleComp(1*65536)},{new DoubleComp(3*65536)},{new DoubleComp(5*65536)},};
 
-        MyMatrix<DoubleComp> vec = new MyMatrix<>(testingVector);
-        MyMatrix test2 = fractionCompGauss.multiplyMatrices(compMyMatrix, vec);
-        System.out.println(test2);
+//        MyMatrix<DoubleComp> vec = new MyMatrix<>(testingVector);
+//        MyMatrix test2 = fractionCompGauss.multiplyMatrices(compMyMatrix, vec);
+//        System.out.println(test2);
 
 
 

@@ -28,30 +28,6 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double>{
     public void setValue(double value){this.value = value;}
 
     @Override
-    public DoubleComp add(DoubleComp doubleComp) {
-        this.value+=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
-    public DoubleComp substract(DoubleComp doubleComp) {
-        this.value-=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
-    public DoubleComp multiply(DoubleComp doubleComp) {
-        this.value*=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
-    public DoubleComp divide(DoubleComp doubleComp) {
-        this.value/=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
     public String toString() {
         return Double.toString(value);
     }

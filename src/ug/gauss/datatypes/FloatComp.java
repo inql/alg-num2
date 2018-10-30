@@ -35,31 +35,6 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float>{
 
     public void setValue(float value) {this.value = value;}
 
-
-    @Override
-    public FloatComp add(FloatComp floatComp) {
-        this.value+=floatComp.getValue();
-        return this;
-    }
-
-    @Override
-    public FloatComp substract(FloatComp floatComp) {
-        this.value-=floatComp.getValue();
-        return this;
-    }
-
-    @Override
-    public FloatComp multiply(FloatComp floatComp) {
-        this.value*=floatComp.getValue();
-        return this;
-    }
-
-    @Override
-    public FloatComp divide(FloatComp floatComp) {
-        this.value/=floatComp.getValue();
-        return this;
-    }
-
     @Override
     public String toString() {
         return Float.toString(value);
