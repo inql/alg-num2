@@ -6,6 +6,7 @@ import ug.gauss.datatypes.MatrixCompatible;
 import ug.gauss.datatypes.MatrixCompatibleFactory;
 import ug.gauss.operations.DataOperation;
 
+
 import java.math.BigInteger;
 
 public class GaussImpl {
@@ -56,74 +57,67 @@ public class GaussImpl {
 //        return resultVector;
 //    }
 
-    public MatrixCompatible[] gauss(){
+    public MatrixCompatible[] gauss() {
         int n = myMatrix.rows.length;
         MatrixCompatible[] resultVector = matrixCompatibleFactory.createArray(n);
         MatrixCompatible m;
-        for(int i=1;i<n;i++){
-            for(int j=i+1;j<n+1;j++){
-                m = dataOperation.divide(myMatrix.getValue(j,i),myMatrix.getValue(i,i));
-                m = dataOperation.multiply(m,matrixCompatibleFactory.createWithDenominator(new BigInteger("-1"),new BigInteger("1")));
-                for(int k=i+1;k<=n+1;k++){
-                    myMatrix.setValue(j,k,dataOperation.add(
-                            dataOperation.multiply(myMatrix.getValue(i,k),m),myMatrix.getValue(j,k))
+        for (int i = 1; i < n; i++) {
+            for (int j = i + 1; j < n + 1; j++) {
+                m = dataOperation.divide(myMatrix.getValue(j, i), myMatrix.getValue(i, i));
+                m = dataOperation.multiply(m, matrixCompatibleFactory.createWithDenominator(new BigInteger("-1"), new BigInteger("1")));
+                for (int k = i + 1; k <= n + 1; k++) {
+                    myMatrix.setValue(j, k, dataOperation.add(
+                            dataOperation.multiply(myMatrix.getValue(i, k), m), myMatrix.getValue(j, k))
                     );
                 }
             }
         }
         MatrixCompatible s = null;
         MatrixCompatible temp;
-        for(int i =n; i>=1; i--){
-            for(int j =n; j>=i+1;j--){
-                temp = dataOperation.multiply(myMatrix.getValue(i,j),resultVector[j-1]);
-                s = dataOperation.subtract(myMatrix.getValue(i,n+1),temp);
+        for (int i = n; i >= 1; i--) {
+            s = myMatrix.getValue(i,n+1);
+            for (int j = n; j >= i + 1; j--) {
+                temp = dataOperation.multiply(myMatrix.getValue(i, j), resultVector[j - 1]);
+                s = dataOperation.subtract(s, temp);
             }
-            temp = myMatrix.getValue(i,i);
-            s = dataOperation.divide(s,temp);
-            resultVector[i-1] = (MatrixCompatible) s.clone();
+            temp = myMatrix.getValue(i, i);
+            s = dataOperation.divide(s, temp);
+            resultVector[i - 1] = s;
         }
         return resultVector;
     }
 
 
-//    public MyMatrix multiplyMatrices(MyMatrix a, MyMatrix b)
-//    {
-//        int rowLengthA = a.columns.length;
-//        int rowLengthB = b.columns.length;
-//        int colLengthA = a.rows.length;
-//        int colLengthB = b.rows.length;
-//
-//        if (rowLengthA != colLengthB)
-//            return null;
-//        MyMatrix result = new MyMatrix(matrixCompatibleFactory.createMatrix(colLengthA,rowLengthB));
-//        // zerowanie tablicy
-//        for (int x = 1; x <= colLengthA ; x++)
-//        {
-//            for (int y = 1; y <= rowLengthB; y++)
-//            {
-//                    //result[x][y].setValue(x*y);
-//                    result.setValue(x,y,matrixCompatibleFactory.createWithNominator(new BigInteger("0")));
-//            }
-//
-//        }
-//        MatrixCompatible tempA;
-//        MatrixCompatible tempB;
-//
-//        for (int x = 1; x <= colLengthA ; x++)
-//        {
-//            for (int y = 1; y <= rowLengthB; y++)
-//            {
-//                for (int k = 1; k <= rowLengthA; k++)
-//                {
-//                    tempA = (MatrixCompatible) a.getValue(x,k).clone();
-//                    tempB = (MatrixCompatible) b.getValue(k,y).clone();
-//                    result.setValue(x,y,(MatrixCompatible)result.getValue(x,y).add(tempA.multiply(tempB)));
-//                  //
-//                }
-//            }
-//
-//        }
-//
-//        return result;
-//    }
+    public MyMatrix multiplyMatrices(MyMatrix a, MyMatrix b) {
+        int rowLengthA = a.columns.length;
+        int rowLengthB = b.columns.length;
+        int colLengthA = a.rows.length;
+        int colLengthB = b.rows.length;
+
+        if (rowLengthA != colLengthB)
+            return null;
+        MyMatrix result = new MyMatrix(matrixCompatibleFactory.createMatrix(colLengthA, rowLengthB));
+
+        for (int x = 1; x <= colLengthA; x++) {
+            for (int y = 1; y <= rowLengthB; y++) {
+                //result[x][y].setValue(x*y);
+                result.setValue(x, y, matrixCompatibleFactory.createWithNominator(new BigInteger("0")));
+            }
+
+        }
+
+
+        for (int x = 1; x <= colLengthA; x++) {
+            for (int y = 1; y <= rowLengthB; y++) {
+                for (int k = 1; k <= rowLengthA; k++) {
+                    result.setValue(x, y, dataOperation.add(result.getValue(x, y), dataOperation.multiply(a.getValue(x, k), b.getValue(k, y))));
+
+                }
+            }
+
+        }
+
+        return result;
+    }
+
 }

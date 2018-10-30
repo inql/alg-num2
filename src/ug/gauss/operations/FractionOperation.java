@@ -13,7 +13,7 @@ public class FractionOperation implements DataOperation<FractionComp> {
         BigInteger nww = MathOperations.calculateNww(element1.getValue().denominator,element2.getValue().denominator);
         fract.nominator = element1.getValue().nominator.multiply(nww.divide(element1.getValue().denominator));
         fract.denominator = nww;
-        fract.nominator = fract.nominator.add(element2.getValue().nominator);
+        fract.nominator = fract.nominator.add(element2.getValue().nominator.multiply(nww.divide(element2.getValue().denominator)));
         result.setValue(fract);
         return result;
     }
@@ -25,7 +25,7 @@ public class FractionOperation implements DataOperation<FractionComp> {
         BigInteger nww = MathOperations.calculateNww(element1.getValue().denominator,element2.getValue().denominator);
         fract.nominator = element1.getValue().nominator.multiply(nww.divide(element1.getValue().denominator));
         fract.denominator = nww;
-        fract.nominator = fract.nominator.subtract(element2.getValue().nominator);
+        fract.nominator = fract.nominator.subtract(element2.getValue().nominator.multiply(nww.divide(element2.getValue().denominator)));
         result.setValue(fract);
         return result;
     }

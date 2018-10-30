@@ -6,15 +6,7 @@ public class MathOperations {
 
     public static BigInteger calculateNwd(BigInteger a, BigInteger b)
     {
-        BigInteger c;
-        while (b.compareTo(BigInteger.ZERO) != 0 )
-        {
-            c = b;
-            b = a.mod(b);
-            a = c;
-        }
-        return a;
-
+        return a.gcd(b);
     }
 
     public static BigInteger calculateNww(BigInteger a, BigInteger b)

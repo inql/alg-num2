@@ -77,7 +77,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
 
     }
 
-    private void simplify()
+    public void simplify()
     {
         BigInteger a = MathOperations.calculateNwd(fract.nominator,fract.denominator);
         fract.nominator = fract.nominator.divide(a);
