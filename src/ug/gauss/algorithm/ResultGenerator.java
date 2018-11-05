@@ -18,7 +18,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
     private final MatrixCompatibleFactory matrixCompatibleFactory;
     private MyMatrix<T> myMatrix;
     private MatrixCompatible[] vectorX;
-    private final GaussImpl gauss;
+   // private final GaussImpl gauss;
 
     public ResultGenerator(int seed, ChoiceType choiceType, DataType dataType) {
         this.randomizer = new Randomizer(seed);
