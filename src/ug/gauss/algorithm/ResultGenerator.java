@@ -12,14 +12,16 @@ import java.math.BigInteger;
 public class ResultGenerator<T extends MatrixCompatible> {
 
     private Randomizer randomizer;
-    private int[] matrixSizes;
+    private int matrixSize;
     private ChoiceType choiceType;
     private DataType dataType;
     private final MatrixCompatibleFactory matrixCompatibleFactory;
+    private MyMatrix<T> myMatrix;
+    private MatrixCompatible[] vectorX;
+    private final GaussImpl gauss;
 
-    public ResultGenerator(int seed, int[] matrixSizes, ChoiceType choiceType, DataType dataType) {
+    public ResultGenerator(int seed, ChoiceType choiceType, DataType dataType) {
         this.randomizer = new Randomizer(seed);
-        this.matrixSizes = matrixSizes;
         this.choiceType = choiceType;
         this.dataType = dataType;
         this.matrixCompatibleFactory = new MatrixCompatibleFactory(dataType);
@@ -32,7 +34,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
                 matrix[i][j] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
             }
         }
-        MatrixCompatible[] vectorX = matrixCompatibleFactory.createArray(size);
+        this.vectorX = matrixCompatibleFactory.createArray(size);
         for (int i =0; i<vectorX.length; i++){
             vectorX[i] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
         }
@@ -42,8 +44,13 @@ public class ResultGenerator<T extends MatrixCompatible> {
         for (int i=0; i<matrix.length;i++){
             matrix[i][matrix[i].length-1] = vectorB[i];
         }
-        MyMatrix<T> result = new MyMatrix<T>((T[][]) matrix);
+        MyMatrix<T> result = new MyMatrix<>((T[][]) matrix);
         return result;
+    }
+
+    public void doTests(){
+        this.myMatrix = generateMatrix(matrixSize);
+
     }
 
 
