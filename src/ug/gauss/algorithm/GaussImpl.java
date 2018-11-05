@@ -88,11 +88,11 @@ public class GaussImpl {
     }
 
 
-    public MyMatrix multiplyMatrices(MyMatrix a, MyMatrix b) {
-        int rowLengthA = a.columns.length;
-        int rowLengthB = b.columns.length;
-        int colLengthA = a.rows.length;
-        int colLengthB = b.rows.length;
+    public MatrixCompatible[] multiplyMatrices(MatrixCompatible[][] a, MatrixCompatible[] b) {
+        int rowLengthA = a.length;
+        int rowLengthB = b.length;
+        int colLengthA = a[0].length;
+        int colLengthB = 1;
 
         if (rowLengthA != colLengthB)
             return null;

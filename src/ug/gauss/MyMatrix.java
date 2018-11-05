@@ -2,7 +2,6 @@ package ug.gauss;
 
 import ug.gauss.datatypes.MatrixCompatible;
 
-import java.lang.reflect.Array;
 import java.util.stream.IntStream;
 
 
