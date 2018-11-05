@@ -63,7 +63,10 @@ public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
     @Override
     public String toString()
     {
-        return fract.nominator.toString() + " / " + fract.denominator.toString();
+        String result = fract.nominator.toString();
+        if(!fract.denominator.equals(BigInteger.ONE))
+            result+=" / "+fract.denominator.toString();
+        return result;
     }
 
     @Override
