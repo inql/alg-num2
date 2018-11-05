@@ -6,8 +6,10 @@ import ug.gauss.Randomizer;
 import ug.gauss.datatypes.DataType;
 import ug.gauss.datatypes.MatrixCompatible;
 import ug.gauss.datatypes.MatrixCompatibleFactory;
+import ug.gauss.operations.DataOperation;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class ResultGenerator<T extends MatrixCompatible> {
 
@@ -18,13 +20,17 @@ public class ResultGenerator<T extends MatrixCompatible> {
     private final MatrixCompatibleFactory matrixCompatibleFactory;
     private MyMatrix<T> myMatrix;
     private MatrixCompatible[] vectorX;
-   // private final GaussImpl gauss;
+    private DataOperation dataOperation;
+    private GaussImpl gauss;
 
-    public ResultGenerator(int seed, ChoiceType choiceType, DataType dataType) {
+    public ResultGenerator(int seed, int matrixSize, ChoiceType choiceType, DataType dataType, DataOperation dataOperation) {
         this.randomizer = new Randomizer(seed);
+        this.matrixSize = matrixSize;
         this.choiceType = choiceType;
         this.dataType = dataType;
         this.matrixCompatibleFactory = new MatrixCompatibleFactory(dataType);
+        this.dataOperation = dataOperation;
+        this.gauss = new GaussImpl(myMatrix,matrixCompatibleFactory,dataOperation);
     }
 
     public MyMatrix<T> generateMatrix(int size){
@@ -32,15 +38,18 @@ public class ResultGenerator<T extends MatrixCompatible> {
         for (int i =0; i<matrix.length; i++){
             for(int j =0; j<matrix[i].length-1; j++){
                 matrix[i][j] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
+//                matrix[i][j] = matrixCompatibleFactory.createWithDenominator(new BigInteger(i+j+""),BigInteger.ONE);
             }
         }
         this.vectorX = matrixCompatibleFactory.createArray(size);
         for (int i =0; i<vectorX.length; i++){
             vectorX[i] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
+//            vectorX[i]= matrixCompatibleFactory.createWithDenominator(new BigInteger(i+""),BigInteger.ONE);
         }
         //tutaj mnożenie
         //temporary xd
-        MatrixCompatible[] vectorB = new MatrixCompatible[size];
+        myMatrix = new MyMatrix<T>((T[][]) matrix);
+        MatrixCompatible[] vectorB = gauss.MultiplyMatrixWithVector(this.myMatrix,vectorX);
         for (int i=0; i<matrix.length;i++){
             matrix[i][matrix[i].length-1] = vectorB[i];
         }
@@ -50,6 +59,8 @@ public class ResultGenerator<T extends MatrixCompatible> {
 
     public void doTests(){
         this.myMatrix = generateMatrix(matrixSize);
+        System.out.println(myMatrix);
+        System.out.println(Arrays.deepToString(vectorX));
 
     }
 

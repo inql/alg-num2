@@ -114,7 +114,7 @@ public class GaussImpl {
 
     public MatrixCompatible[] MultiplyMatrixWithVector(MyMatrix a, MatrixCompatible[] vector)
     {
-        if (a.columns.length != vector.length)
+        if (a.columns.length-1 != vector.length)
             return null;
         MatrixCompatible[] result = matrixCompatibleFactory.createArray(vector.length);
 
