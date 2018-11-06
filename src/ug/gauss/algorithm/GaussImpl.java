@@ -1,7 +1,9 @@
 package ug.gauss.algorithm;
 
+import ug.gauss.ChoiceType;
 import ug.gauss.MyMatrix;
 import ug.gauss.Randomizer;
+import ug.gauss.Swapper;
 import ug.gauss.datatypes.MatrixCompatible;
 import ug.gauss.datatypes.MatrixCompatibleFactory;
 import ug.gauss.operations.DataOperation;
@@ -11,16 +13,18 @@ import java.math.BigInteger;
 
 public class GaussImpl {
 
-    final MyMatrix myMatrix;
+    MyMatrix myMatrix;
     final MatrixCompatibleFactory matrixCompatibleFactory;
     final Randomizer rand;
     final DataOperation dataOperation;
+    final ChoiceType choiceType;
 
-    public GaussImpl(MyMatrix myMatrix, MatrixCompatibleFactory matrixCompatibleFactory, DataOperation dataOperation) {
+    public GaussImpl(MyMatrix myMatrix, MatrixCompatibleFactory matrixCompatibleFactory, DataOperation dataOperation, ChoiceType choiceType) {
         this.myMatrix = myMatrix;
         this.matrixCompatibleFactory = matrixCompatibleFactory;
         this.rand = new Randomizer();
         this.dataOperation = dataOperation;
+        this.choiceType = choiceType;
     }
 
 //    public MatrixCompatible[] gaussstare() {
@@ -110,6 +114,44 @@ public class GaussImpl {
             }
         }
         return result;
+    }
+
+    public void SwitchRowOrColumn(int startX, int startY){
+
+
+        if (choiceType == ChoiceType.PARTIAL)
+        {
+            int rowToSwitch = startX;
+            for (int i=startX; i <= myMatrix.rows.length; i++)
+            {
+                if ( myMatrix.getValue(i,startY).compareTo(myMatrix.getValue(rowToSwitch,startY)) > 0)
+                    rowToSwitch = i;
+
+            }
+
+            myMatrix.swap(startX,rowToSwitch, Swapper.ROW);
+
+        } else if (choiceType == ChoiceType.FULL)
+        {
+            int rowToSwitch = startY;
+            int columnToSwitch = startX;
+            for (int i=startY; i <= myMatrix.rows.length; i++)
+            {
+                for (int o=startX; o < myMatrix.columns.length; o++) {
+
+                    if (myMatrix.getValue(i, o).compareTo(myMatrix.getValue(rowToSwitch, columnToSwitch)) > 0) {
+                        rowToSwitch = i;
+                        columnToSwitch = o;
+                    }
+                }
+
+            }
+            myMatrix.swap(startX,rowToSwitch, Swapper.ROW);
+            myMatrix.swap(startY,columnToSwitch, Swapper.COLUMN);
+
+        }
+        System.out.println(myMatrix);
+
     }
 
     public MatrixCompatible[] MultiplyMatrixWithVector(MyMatrix a, MatrixCompatible[] vector)

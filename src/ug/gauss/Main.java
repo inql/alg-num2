@@ -10,13 +10,16 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //ResultGenerator<FractionComp> fractionCompResultGenerator = new ResultGenerator<>(2, 2, ChoiceType.PARTIAL,DataType.FRACTION,new FractionOperation());
-        //fractionCompResultGenerator.doTests();
-        System.out.println("DOUBLE");
+
+
+        System.out.println("DOUBLE / FULL");
         ResultGenerator<DoubleComp> doubleCompResultGenerator = new ResultGenerator<>(3, 2, ChoiceType.FULL,DataType.DOUBLE,new DoubleOperation());
         doubleCompResultGenerator.doTests();
-        System.out.println("FLOAT");
+        System.out.println("FLOAT / NONE");
         ResultGenerator<DoubleComp> floatCompResultGenerator = new ResultGenerator<>(3, 2, ChoiceType.NONE,DataType.FLOAT,new FloatOperation());
         floatCompResultGenerator.doTests();
+        System.out.println("FRACTION COMP / PARTIAL");
+        ResultGenerator<FractionComp> fractionCompResultGenerator = new ResultGenerator<>(7190, 2, ChoiceType.PARTIAL,DataType.FRACTION,new FractionOperation());
+        fractionCompResultGenerator.doTests();
     }
 }
