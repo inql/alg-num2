@@ -3,6 +3,7 @@ package ug.gauss.algorithm;
 import ug.gauss.ChoiceType;
 import ug.gauss.MyMatrix;
 import ug.gauss.Randomizer;
+import ug.gauss.Swapper;
 import ug.gauss.datatypes.DataType;
 import ug.gauss.datatypes.MatrixCompatible;
 import ug.gauss.datatypes.MatrixCompatibleFactory;
@@ -41,6 +42,9 @@ public class ResultGenerator<T extends MatrixCompatible> {
 //                matrix[i][j] = matrixCompatibleFactory.createWithDenominator(new BigInteger(i+j+""),BigInteger.ONE);
             }
         }
+
+
+
         this.vectorX = matrixCompatibleFactory.createArray(size);
         for (int i =0; i<vectorX.length; i++){
             vectorX[i] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
@@ -49,11 +53,50 @@ public class ResultGenerator<T extends MatrixCompatible> {
         //tutaj mnożenie
         //temporary xd
         myMatrix = new MyMatrix<T>((T[][]) matrix);
+
+
         MatrixCompatible[] vectorB = gauss.MultiplyMatrixWithVector(this.myMatrix,vectorX);
         for (int i=0; i<matrix.length;i++){
             matrix[i][matrix[i].length-1] = vectorB[i];
         }
         MyMatrix<T> result = new MyMatrix<>((T[][]) matrix);
+
+        // swapowanie
+        // Wyswietla stan macierzy przed i po zmianie
+        System.out.println(result);
+        if (choiceType == ChoiceType.PARTIAL)
+        {
+            int rowToSwitch = 1;
+            for (int i=1; i <= result.rows.length; i++)
+            {
+                if ( result.getValue(i,1).compareTo(result.getValue(rowToSwitch,1)) > 0)
+                    rowToSwitch = i;
+
+            }
+
+            result.swap(1,rowToSwitch, Swapper.ROW);
+
+        } else if (choiceType == ChoiceType.FULL)
+        {
+            int rowToSwitch = 1;
+            int columnToSwitch = 1;
+            for (int i=1; i <= result.rows.length; i++)
+            {
+                for (int o=1; o < result.columns.length; o++) {
+
+                    if (result.getValue(i, o).compareTo(result.getValue(rowToSwitch, columnToSwitch)) > 0) {
+                        rowToSwitch = i;
+                        columnToSwitch = o;
+                    }
+                }
+
+            }
+            result.swap(1,rowToSwitch, Swapper.ROW);
+            result.swap(1,columnToSwitch, Swapper.COLUMN);
+
+        }
+
+
         return result;
     }
 
@@ -63,9 +106,6 @@ public class ResultGenerator<T extends MatrixCompatible> {
         System.out.println(Arrays.deepToString(vectorX));
 
     }
-
-
-
 
 
 }
