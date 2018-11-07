@@ -119,6 +119,9 @@ public class GaussImpl {
     public void SwitchRowOrColumn(int startX, int startY){
 
 
+        if(choiceType == ChoiceType.NONE)
+            return;
+
         if (choiceType == ChoiceType.PARTIAL)
         {
             int rowToSwitch = startX;
