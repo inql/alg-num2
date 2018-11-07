@@ -44,8 +44,13 @@ public class FractionOperation implements DataOperation<FractionComp> {
     public FractionComp divide(FractionComp element1, FractionComp element2) {
         FractionComp result = new FractionComp();
         Fract fract = new Fract();
+
         BigInteger pom = element2.getValue().nominator;
         fract.nominator = element2.getValue().denominator;
+        if (pom.compareTo(BigInteger.ZERO) < 0) {
+            pom = pom.negate();
+            fract.nominator = fract.nominator.negate();
+        }
         fract.denominator = pom;
         result.setValue(fract);
         return this.multiply(element1,result);
