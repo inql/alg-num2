@@ -80,6 +80,11 @@ public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
 
     }
 
+    public Double getDoubleValue()
+    {
+        return fract.nominator.doubleValue() / fract.denominator.doubleValue();
+    }
+
     public void simplify()
     {
         BigInteger a = MathOperations.calculateNwd(fract.nominator,fract.denominator);
