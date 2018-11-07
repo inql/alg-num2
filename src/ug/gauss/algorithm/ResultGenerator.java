@@ -3,7 +3,6 @@ package ug.gauss.algorithm;
 import ug.gauss.ChoiceType;
 import ug.gauss.MyMatrix;
 import ug.gauss.Randomizer;
-import ug.gauss.Swapper;
 import ug.gauss.datatypes.DataType;
 import ug.gauss.datatypes.MatrixCompatible;
 import ug.gauss.datatypes.MatrixCompatibleFactory;
@@ -53,35 +52,42 @@ public class ResultGenerator<T extends MatrixCompatible> {
             vectorX[i] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
 //            vectorX[i]= matrixCompatibleFactory.createWithDenominator(new BigInteger(i+""),BigInteger.ONE);
         }
-        //tutaj mnożenie
-        //temporary xd
         myMatrix = new MyMatrix<T>((T[][]) matrix);
 
 
-        MatrixCompatible[] vectorB = gauss.MultiplyMatrixWithVector(myMatrix,vectorX);
+        MatrixCompatible[] vectorB = gauss.multiplyMatrixWithVector(myMatrix,vectorX);
         for (int i=0; i<matrix.length;i++){
             matrix[i][matrix[i].length-1] = vectorB[i];
         }
-        MyMatrix<T> result = new MyMatrix<>((T[][]) matrix);
 
 
-        return result;
+        return new MyMatrix<>((T[][]) matrix);
     }
 
     public void doTests(){
 
-        System.out.println(myMatrix);
-        System.out.println(Arrays.deepToString(vectorX));
 
         long startTime = System.nanoTime();
         // gauss
-        gauss.SwitchRowOrColumn(1,1);
+        gauss.switchRowOrColumn(1,1);
+
+        MatrixCompatible[] result = gauss.gauss();
 
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
-        System.out.println("Czas wykonywania " + elapsedTime);
+        System.out.println(Arrays.deepToString(vectorX));
+        System.out.println(Arrays.deepToString(result));
+        System.out.println(calculateAbsoluteError(vectorX,result));
+        System.out.println("Czas wykonywania (ms)" + elapsedTime/1000000.00);
 
+    }
 
+    private MatrixCompatible calculateAbsoluteError(MatrixCompatible[] goldenVector, MatrixCompatible[] calculatedVector){
+        MatrixCompatible absoluteError = matrixCompatibleFactory.createWithNominator(BigInteger.ZERO);
+        for(int i = 0; i<goldenVector.length; i++){
+            absoluteError = dataOperation.add(absoluteError,dataOperation.subtract(goldenVector[i],calculatedVector[i]));
+        }
+        return absoluteError;
     }
 
 

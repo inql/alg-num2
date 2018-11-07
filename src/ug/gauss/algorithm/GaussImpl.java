@@ -116,7 +116,7 @@ public class GaussImpl {
         return result;
     }
 
-    public void SwitchRowOrColumn(int startX, int startY){
+    public void switchRowOrColumn(int startX, int startY){
 
 
         if(choiceType == ChoiceType.NONE)
@@ -157,7 +157,7 @@ public class GaussImpl {
 
     }
 
-    public MatrixCompatible[] MultiplyMatrixWithVector(MyMatrix a, MatrixCompatible[] vector)
+    public MatrixCompatible[] multiplyMatrixWithVector(MyMatrix a, MatrixCompatible[] vector)
     {
         if (a.columns.length-1 != vector.length)
             return null;
