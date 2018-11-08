@@ -23,6 +23,6 @@ public class AggregatedResults {
 
     @Override
     public String toString() {
-        return results.toString()+executionCount+";\n";
+        return results.toString()+executionCount+";";
     }
 }

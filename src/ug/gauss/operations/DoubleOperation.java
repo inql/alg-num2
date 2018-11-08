@@ -31,4 +31,11 @@ public class DoubleOperation implements DataOperation<DoubleComp> {
         result.setValue(element1.getValue()/element2.getValue());
         return result;
     }
+
+    @Override
+    public DoubleComp abs(DoubleComp element) {
+        DoubleComp result = new DoubleComp();
+        result.setValue(Math.abs(element.getValue()));
+        return result;
+    }
 }

@@ -32,14 +32,15 @@ public class CsvGenerator {
             ChoiceType[] choiceTypes = {ChoiceType.NONE,ChoiceType.PARTIAL,ChoiceType.FULL};
             for(DataType dataType : dataTypes){
                 bufferedWriter.write(dataType.toString()+"\n\n");
-                for(ChoiceType choiceType : choiceTypes){
-                    bufferedWriter.write(choiceType.toString()+"\n"+"n;błąd;\n");
+                    bufferedWriter.write("\n"+"n;błąd bezwzględny;czas wykonania;ilość prób\n");
                     for(int matrixSize : matrixScope){
-                        bufferedWriter.write(matrixSize+";"+getCalculations(matrixSize,choiceType,dataType)+"\n");
-                    }
-                    bufferedWriter.write("\n");
+                        bufferedWriter.write(matrixSize+";");
+                        for(ChoiceType choiceType : choiceTypes){
+                            bufferedWriter.write(getCalculations(matrixSize,choiceType,dataType)+";\n");
+                        }
+                        bufferedWriter.write("\n");
 
-                }
+                    }
             }
             bufferedWriter.close();
         } catch (IOException e) {

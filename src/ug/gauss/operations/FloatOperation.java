@@ -30,4 +30,11 @@ public class FloatOperation implements DataOperation<FloatComp> {
         result.setValue(element1.getValue()/element2.getValue());
         return result;
     }
+
+    @Override
+    public FloatComp abs(FloatComp element) {
+        FloatComp result = new FloatComp();
+        result.setValue(Math.abs(element.getValue()));
+        return result;
+    }
 }

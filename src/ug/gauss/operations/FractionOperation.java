@@ -55,5 +55,12 @@ public class FractionOperation implements DataOperation<FractionComp> {
         result.setValue(fract);
         return this.multiply(element1,result);
     }
+
+    @Override
+    public FractionComp abs(FractionComp element) {
+        FractionComp result = new FractionComp();
+        result.setValue(new Fract(element.getValue().nominator.abs(),element.getValue().denominator.abs()));
+        return result;
+    }
 }
 

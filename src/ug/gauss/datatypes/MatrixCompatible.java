@@ -8,4 +8,5 @@ public interface MatrixCompatible<T1,T2> extends Comparable<T1> {
     Double getDoubleValue();
     int compareTo(T1 t1);
 
+
 }

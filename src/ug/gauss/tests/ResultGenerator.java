@@ -91,7 +91,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
         for(int i = 0; i<goldenVector.length; i++){
             absoluteError = dataOperation.add(absoluteError,dataOperation.subtract(goldenVector[i],calculatedVector[myMatrix.rows[i]-1]));
         }
-        return absoluteError.getDoubleValue()/ (double) goldenVector.length;
+        return Math.abs(absoluteError.getDoubleValue())/ (double) goldenVector.length;
     }
 
 
