@@ -13,7 +13,7 @@ import java.math.BigInteger;
 
 public class GaussImpl {
 
-    MyMatrix myMatrix;
+    public MyMatrix myMatrix;
     final MatrixCompatibleFactory matrixCompatibleFactory;
     final Randomizer rand;
     final DataOperation dataOperation;

@@ -1,8 +1,9 @@
-package ug.gauss.algorithm;
+package ug.gauss.tests;
 
 import ug.gauss.ChoiceType;
 import ug.gauss.MyMatrix;
 import ug.gauss.Randomizer;
+import ug.gauss.algorithm.GaussImpl;
 import ug.gauss.datatypes.DataType;
 import ug.gauss.datatypes.MatrixCompatible;
 import ug.gauss.datatypes.MatrixCompatibleFactory;
@@ -65,7 +66,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
         return new MyMatrix<>((T[][]) matrix);
     }
 
-    public void doTests(){
+    public Results doTests(){
 
 
         long startTime = System.nanoTime();
@@ -80,16 +81,17 @@ public class ResultGenerator<T extends MatrixCompatible> {
         System.out.println(Arrays.deepToString(result));
         System.out.println(calculateAbsoluteError(vectorX,result));
         System.out.println("Czas wykonywania (ms)" + elapsedTime/1000000.00);
+        return new Results(calculateAbsoluteError(vectorX,result),elapsedTime/1000000.00);
 
     }
 
     @SuppressWarnings("unchecked")
-    private MatrixCompatible calculateAbsoluteError(MatrixCompatible[] goldenVector, MatrixCompatible[] calculatedVector){
+    private Double calculateAbsoluteError(MatrixCompatible[] goldenVector, MatrixCompatible[] calculatedVector){
         MatrixCompatible absoluteError = matrixCompatibleFactory.createWithNominator(BigInteger.ZERO);
         for(int i = 0; i<goldenVector.length; i++){
             absoluteError = dataOperation.add(absoluteError,dataOperation.subtract(goldenVector[i],calculatedVector[myMatrix.rows[i]-1]));
         }
-        return absoluteError;
+        return absoluteError.getDoubleValue()/ (double) goldenVector.length;
     }
 
 

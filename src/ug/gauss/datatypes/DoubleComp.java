@@ -37,6 +37,11 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double>{
         cloned.setValue(this.getValue());
         return cloned;
     }
+
+    @Override
+    public Double getDoubleValue() {
+        return this.value;
+    }
     /*
 
     If the DoubleComp is equal to the argument then 0 is returned.

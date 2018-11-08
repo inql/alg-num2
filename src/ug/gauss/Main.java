@@ -1,6 +1,7 @@
 package ug.gauss;
 
-import ug.gauss.algorithm.ResultGenerator;
+import ug.gauss.tests.CsvGenerator;
+import ug.gauss.tests.ResultGenerator;
 import ug.gauss.datatypes.*;
 import ug.gauss.operations.DoubleOperation;
 import ug.gauss.operations.FloatOperation;
@@ -27,6 +28,9 @@ public class Main {
         FractionComp fractionComp = new FractionOperation().add(new FractionComp(BigInteger.ONE,BigInteger.ONE),new FractionComp(BigInteger.TEN,BigInteger.ONE));
         fractionComp.simplify();
         System.out.println(fractionComp);
+
+        CsvGenerator csvGenerator = new CsvGenerator(new int[] {2,5,10,20,50});
+        csvGenerator.writeCsv();
 
     }
 }

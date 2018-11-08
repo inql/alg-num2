@@ -80,6 +80,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
 
     }
 
+    @Override
     public Double getDoubleValue()
     {
         return fract.nominator.doubleValue() / fract.denominator.doubleValue();
