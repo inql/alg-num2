@@ -131,7 +131,7 @@ public class GaussImpl {
             int rowToSwitch = startX;
             for (int i=startX; i <= myMatrix.rows.length; i++)
             {
-                if ( myMatrix.getValue(i,startY).compareTo(myMatrix.getValue(rowToSwitch,startY)) > 0)
+                if ( dataOperation.abs(myMatrix.getValue(i,startY)).compareTo(dataOperation.abs(myMatrix.getValue(rowToSwitch,startY))) > 0)
                     rowToSwitch = i;
 
             }
@@ -146,7 +146,7 @@ public class GaussImpl {
             {
                 for (int o=startX; o < myMatrix.columns.length; o++) {
 
-                    if (myMatrix.getValue(i, o).compareTo(myMatrix.getValue(rowToSwitch, columnToSwitch)) > 0) {
+                    if (dataOperation.abs(myMatrix.getValue(i, o)).compareTo(dataOperation.abs(myMatrix.getValue(rowToSwitch, columnToSwitch))) > 0) {
                         rowToSwitch = i;
                         columnToSwitch = o;
                     }
