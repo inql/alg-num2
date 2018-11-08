@@ -26,7 +26,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
      */
 
 
-    Fract fract;
+    private Fract fract;
 
     @Override
     public Fract getValue() {

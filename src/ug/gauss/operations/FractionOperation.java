@@ -56,3 +56,4 @@ public class FractionOperation implements DataOperation<FractionComp> {
         return this.multiply(element1,result);
     }
 }
+

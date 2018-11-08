@@ -36,6 +36,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
     }
 
 
+    @SuppressWarnings("unchecked")
     public MyMatrix<T> generateMatrix(int size){
         MatrixCompatible[][] matrix = matrixCompatibleFactory.createMatrix(size,size+1);
         for (int i =0; i<matrix.length; i++){
@@ -52,7 +53,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
             vectorX[i] = matrixCompatibleFactory.createWithNominator(new BigInteger(String.valueOf(randomizer.randomNumber())));
 //            vectorX[i]= matrixCompatibleFactory.createWithDenominator(new BigInteger(i+""),BigInteger.ONE);
         }
-        myMatrix = new MyMatrix<T>((T[][]) matrix);
+        myMatrix = new MyMatrix<>((T[][]) matrix);
 
 
         MatrixCompatible[] vectorB = gauss.multiplyMatrixWithVector(myMatrix,vectorX);
@@ -69,7 +70,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
 
         long startTime = System.nanoTime();
         // gauss
-        gauss.switchRowOrColumn(1,1);
+//        gauss.switchRowOrColumn(1,1);
 
         MatrixCompatible[] result = gauss.gauss();
 
@@ -82,10 +83,11 @@ public class ResultGenerator<T extends MatrixCompatible> {
 
     }
 
+    @SuppressWarnings("unchecked")
     private MatrixCompatible calculateAbsoluteError(MatrixCompatible[] goldenVector, MatrixCompatible[] calculatedVector){
         MatrixCompatible absoluteError = matrixCompatibleFactory.createWithNominator(BigInteger.ZERO);
         for(int i = 0; i<goldenVector.length; i++){
-            absoluteError = dataOperation.add(absoluteError,dataOperation.subtract(goldenVector[i],calculatedVector[i]));
+            absoluteError = dataOperation.add(absoluteError,dataOperation.subtract(goldenVector[i],calculatedVector[myMatrix.rows[i]-1]));
         }
         return absoluteError;
     }

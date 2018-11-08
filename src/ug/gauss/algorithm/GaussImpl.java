@@ -61,6 +61,7 @@ public class GaussImpl {
 //        return resultVector;
 //    }
 
+    @SuppressWarnings("unchecked")
     public MatrixCompatible[] gauss() {
         int n = myMatrix.rows.length;
         MatrixCompatible[] resultVector = matrixCompatibleFactory.createArray(n);
@@ -73,6 +74,7 @@ public class GaussImpl {
                     myMatrix.setValue(j, k, dataOperation.add(
                             dataOperation.multiply(myMatrix.getValue(i, k), m), myMatrix.getValue(j, k))
                     );
+//                    System.out.println("i="+i+" j="+j+" k="+k);
                 }
             }
         }
@@ -92,6 +94,7 @@ public class GaussImpl {
     }
 
 
+    @SuppressWarnings("unchecked")
     public MyMatrix multiplyMatrices(MyMatrix a, MyMatrix b) {
         int rowLengthA = a.columns.length;
         int rowLengthB = b.columns.length;
@@ -103,7 +106,7 @@ public class GaussImpl {
         for (int x = 1; x <= colLengthA; x++) {
             for (int y = 1; y <= rowLengthB; y++) {
                 //result[x][y].setValue(x*y);
-                result.setValue(x, y, matrixCompatibleFactory.createWithNominator(new BigInteger("0")));
+                result.setValue(x, y, matrixCompatibleFactory.createWithNominator(BigInteger.ZERO));
             }
         }
         for (int x = 1; x <= colLengthA; x++) {
@@ -116,6 +119,7 @@ public class GaussImpl {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     public void switchRowOrColumn(int startX, int startY){
 
 
@@ -157,6 +161,7 @@ public class GaussImpl {
 
     }
 
+    @SuppressWarnings("unchecked")
     public MatrixCompatible[] multiplyMatrixWithVector(MyMatrix a, MatrixCompatible[] vector)
     {
         if (a.columns.length-1 != vector.length)

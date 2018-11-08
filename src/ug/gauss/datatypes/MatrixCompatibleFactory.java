@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class MatrixCompatibleFactory {
 
-    DataType dataType;
+    private DataType dataType;
 
     public MatrixCompatibleFactory(DataType dataType){
         this.dataType = dataType;
