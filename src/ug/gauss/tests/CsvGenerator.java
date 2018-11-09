@@ -8,7 +8,6 @@ import ug.gauss.datatypes.FractionComp;
 import ug.gauss.operations.DoubleOperation;
 import ug.gauss.operations.FloatOperation;
 import ug.gauss.operations.FractionOperation;
-import ug.gauss.tests.ResultGenerator;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -34,9 +33,9 @@ public class CsvGenerator {
                 bufferedWriter.write(dataType.toString()+"\n\n");
                     bufferedWriter.write("\n"+"n;błąd bezwzględny;czas wykonania;ilość prób\n");
                     for(int matrixSize : matrixScope){
-                        bufferedWriter.write(matrixSize+";");
                         for(ChoiceType choiceType : choiceTypes){
-                            bufferedWriter.write(getCalculations(matrixSize,choiceType,dataType)+";\n");
+                            bufferedWriter.write(matrixSize+";");
+                            bufferedWriter.write(getCalculations(matrixSize,choiceType,dataType)+"\n");
                         }
                         bufferedWriter.write("\n");
 
