@@ -77,6 +77,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
 
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
+        System.out.println(dataType+ " "+choiceType);
         System.out.println(Arrays.deepToString(vectorX));
         System.out.println(Arrays.deepToString(result));
         System.out.println(calculateAbsoluteError(vectorX,result));

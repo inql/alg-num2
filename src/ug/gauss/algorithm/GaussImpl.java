@@ -66,7 +66,9 @@ public class GaussImpl {
         int n = myMatrix.rows.length;
         MatrixCompatible[] resultVector = matrixCompatibleFactory.createArray(n);
         MatrixCompatible m;
+        System.out.println(myMatrix);
         for (int i = 1; i < n; i++) {
+            switchRowOrColumn(i+1,i+1);
             for (int j = i + 1; j < n + 1; j++) {
                 m = dataOperation.divide(myMatrix.getValue(j, i), myMatrix.getValue(i, i));
                 m = dataOperation.multiply(m, matrixCompatibleFactory.createWithDenominator(new BigInteger("-1"), new BigInteger("1")));
@@ -74,7 +76,7 @@ public class GaussImpl {
                     myMatrix.setValue(j, k, dataOperation.add(
                             dataOperation.multiply(myMatrix.getValue(i, k), m), myMatrix.getValue(j, k))
                     );
-//                    System.out.println("i="+i+" j="+j+" k="+k);
+                    System.out.println(myMatrix);
                 }
             }
         }
@@ -83,12 +85,13 @@ public class GaussImpl {
         for (int i = n; i >= 1; i--) {
             s = myMatrix.getValue(i,n+1);
             for (int j = n; j >= i + 1; j--) {
-                temp = dataOperation.multiply(myMatrix.getValue(i, j), resultVector[j - 1]);
+                temp = dataOperation.multiply(myMatrix.getValue(i, j), resultVector[myMatrix.columns[j-1]-1]);
                 s = dataOperation.subtract(s, temp);
             }
             temp = myMatrix.getValue(i, i);
             s = dataOperation.divide(s, temp);
-            resultVector[i - 1] = s;
+//            resultVector[i - 1] = s;
+            resultVector[myMatrix.columns[i-1]-1] = s;
         }
         return resultVector;
     }
@@ -157,7 +160,6 @@ public class GaussImpl {
             myMatrix.swap(startY,columnToSwitch, Swapper.COLUMN);
 
         }
-        System.out.println(myMatrix);
 
     }
 

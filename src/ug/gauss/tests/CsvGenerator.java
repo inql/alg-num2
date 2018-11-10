@@ -34,8 +34,8 @@ public class CsvGenerator {
                     bufferedWriter.write("\n"+"n;błąd bezwzględny;czas wykonania;ilość prób\n");
                     for(int matrixSize : matrixScope){
                         for(ChoiceType choiceType : choiceTypes){
-                            bufferedWriter.write(matrixSize+";");
-                            bufferedWriter.write(getCalculations(matrixSize,choiceType,dataType)+"\n");
+                            bufferedWriter.write(matrixSize+";"+choiceType+";");
+                            bufferedWriter.write(getCalculations(matrixSize,ChoiceType.NONE,dataType)+"\n");
                         }
                         bufferedWriter.write("\n");
 
@@ -52,13 +52,13 @@ public class CsvGenerator {
     private AggregatedResults getCalculations(int matrixSize, ChoiceType choiceType, DataType dataType){
         ResultGenerator resultGenerator;
         AggregatedResults aggregatedResults = new AggregatedResults();
-        for(int i =0; i<matrixSize%3; i++){
+        for(int i =0; i<10; i++){
             if(dataType==DataType.FRACTION)
-                resultGenerator = new ResultGenerator<FractionComp>(i,matrixSize,choiceType,dataType,new FractionOperation());
+                resultGenerator = new ResultGenerator<FractionComp>(i+1,matrixSize,choiceType,dataType,new FractionOperation());
             else if(dataType==DataType.FLOAT)
-                resultGenerator = new ResultGenerator<FloatComp>(i,matrixSize,choiceType,dataType,new FloatOperation());
+                resultGenerator = new ResultGenerator<FloatComp>(i+1,matrixSize,choiceType,dataType,new FloatOperation());
             else
-                resultGenerator = new ResultGenerator<DoubleComp>(i,matrixSize,choiceType,dataType,new DoubleOperation());
+                resultGenerator = new ResultGenerator<DoubleComp>(i+1,matrixSize,choiceType,dataType,new DoubleOperation());
             aggregatedResults.updateAggregatedResults(resultGenerator.doTests());
         }
         aggregatedResults.divideByExecutionCount();
