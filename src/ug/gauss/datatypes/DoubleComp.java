@@ -25,31 +25,13 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double>{
         return this;
     }
 
+    @Override
+    public DoubleComp setValue(Double value) {
+        this.value = value;
+        return this;
+    }
+
     public void setValue(double value){this.value = value;}
-
-    @Override
-    public DoubleComp add(DoubleComp doubleComp) {
-        this.value+=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
-    public DoubleComp substract(DoubleComp doubleComp) {
-        this.value-=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
-    public DoubleComp multiply(DoubleComp doubleComp) {
-        this.value*=doubleComp.getValue();
-        return this;
-    }
-
-    @Override
-    public DoubleComp divide(DoubleComp doubleComp) {
-        this.value/=doubleComp.getValue();
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -60,6 +42,11 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double>{
         DoubleComp cloned = new DoubleComp();
         cloned.setValue(this.getValue());
         return cloned;
+    }
+
+    @Override
+    public Double getDoubleValue() {
+        return this.value;
     }
     /*
 

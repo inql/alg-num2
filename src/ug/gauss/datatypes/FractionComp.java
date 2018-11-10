@@ -1,19 +1,11 @@
 package ug.gauss.datatypes;
 
+import ug.gauss.operations.MathOperations;
+
 import java.math.BigInteger;
 
-public class FractionComp implements MatrixCompatible<FractionComp, FractionComp.Fract> {
+public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
 
-
-    class Fract{
-        BigInteger denominator;
-        BigInteger nominator;
-
-        public Fract(BigInteger nominator, BigInteger denominator) {
-            this.denominator = denominator;
-            this.nominator = nominator;
-        }
-    }
 
     public FractionComp(){
 
@@ -34,7 +26,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
      */
 
 
-    Fract fract;
+    private Fract fract;
 
     @Override
     public Fract getValue() {
@@ -44,11 +36,14 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
     @Override
     public FractionComp setValue(int value) {
         fract.nominator = new BigInteger(Integer.toString(value));
+        simplify();
         return this;
     }
 
-    public void setValue(Fract fract){
+    public FractionComp setValue(Fract fract){
         this.fract = fract;
+        simplify();
+        return this;
     }
 
     public FractionComp(BigInteger nominator)
@@ -58,6 +53,7 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
     public FractionComp(int nominator) {
         this(new BigInteger(Integer.toString(nominator)),new BigInteger("65536"));
+        simplify();
     }
 
     public FractionComp(BigInteger nominator, BigInteger denominator){
@@ -66,62 +62,18 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
     }
 
     @Override
-    public FractionComp add(FractionComp fractionComp) {
-
-        BigInteger pom = NWW(fractionComp.fract.denominator, fract.denominator);
-
-        fractionComp.fract.nominator = fractionComp.fract.nominator.multiply(pom.divide(fractionComp.fract.denominator));
-        fract.nominator = fract.nominator.multiply(pom.divide(fract.denominator));
-        fract.denominator = pom;
-        fract.nominator = fract.nominator.add(fractionComp.fract.nominator);
-        simplify();
-        return this;
-
-    }
-
-    @Override
-    public FractionComp substract(FractionComp fractionComp) {
-
-        BigInteger pom = NWW(fractionComp.fract.denominator, fract.denominator);
-
-        fractionComp.fract.nominator = fractionComp.fract.nominator.multiply(pom.divide(fractionComp.fract.denominator));
-        fract.nominator = fract.nominator.multiply(pom.divide(fract.denominator));
-        fract.denominator = pom;
-        fract.nominator = fract.nominator.subtract(fractionComp.fract.nominator);
-        simplify();
-        return this;
-    }
-
-    @Override
-    public FractionComp multiply(FractionComp fractionComp) {
-
-        this.fract.nominator = this.fract.nominator.multiply(fractionComp.fract.nominator);
-        this.fract.denominator = this.fract.denominator.multiply(fractionComp.fract.denominator);
-        simplify();
-        return this;
-    }
-
-    @Override
-    public FractionComp divide(FractionComp fractionComp) {
-
-        BigInteger pom = fractionComp.fract.nominator;
-        fractionComp.fract.nominator = fractionComp.fract.denominator;
-        fractionComp.fract.denominator = pom;
-        multiply(fractionComp);
-        return this;
-
-    }
-
-    @Override
     public String toString()
     {
-        return fract.nominator.toString() + " / " + fract.denominator.toString();
+        String result = fract.nominator.toString();
+        if(!fract.denominator.equals(BigInteger.ONE))
+            result+=" / "+fract.denominator.toString();
+        return result;
     }
 
     @Override
     public int compareTo(FractionComp fractionComp)
     {
-        BigInteger pom = NWW(fractionComp.fract.denominator, fract.denominator);
+        BigInteger pom = MathOperations.calculateNww(fractionComp.fract.denominator, fract.denominator);
         BigInteger a = fractionComp.fract.nominator.multiply(pom.divide(fractionComp.fract.denominator));
         BigInteger b = this.fract.nominator.multiply(pom.divide(this.fract.denominator));
         return b.compareTo(a);
@@ -129,27 +81,15 @@ public class FractionComp implements MatrixCompatible<FractionComp, FractionComp
 
     }
 
-    private BigInteger NWD(BigInteger a, BigInteger b)
+    @Override
+    public Double getDoubleValue()
     {
-        BigInteger c;
-        while (b.compareTo(BigInteger.ZERO) != 0 )
-        {
-            c = b;
-            b = a.mod(b);
-            a = c;
-        }
-        return a;
-
+        return fract.nominator.doubleValue() / fract.denominator.doubleValue();
     }
 
-    private BigInteger NWW(BigInteger a, BigInteger b)
+    public void simplify()
     {
-        return a.divide(NWD(a,b)).multiply(b);
-    }
-
-    private void simplify()
-    {
-        BigInteger a = NWD(fract.nominator,fract.denominator);
+        BigInteger a = MathOperations.calculateNwd(fract.nominator,fract.denominator);
         fract.nominator = fract.nominator.divide(a);
         fract.denominator = fract.denominator.divide(a);
     }

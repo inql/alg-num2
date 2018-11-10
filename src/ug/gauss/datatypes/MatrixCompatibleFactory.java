@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class MatrixCompatibleFactory {
 
-    DataType dataType;
+    private DataType dataType;
 
     public MatrixCompatibleFactory(DataType dataType){
         this.dataType = dataType;
@@ -49,6 +49,21 @@ public class MatrixCompatibleFactory {
         }
         else if(dataType == DataType.FRACTION){
             return new FractionComp[length];
+        }
+        else{
+            return null;
+        }
+    }
+
+    public MatrixCompatible[][] createMatrix(int x, int y){
+        if(dataType == DataType.FLOAT){
+            return new FloatComp[x][y];
+        }
+        else if(dataType == DataType.DOUBLE){
+            return new DoubleComp[x][y];
+        }
+        else if(dataType == DataType.FRACTION){
+            return new FractionComp[x][y];
         }
         else{
             return null;
