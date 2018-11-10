@@ -52,10 +52,12 @@ public class CsvGenerator {
     private AggregatedResults getCalculations(int matrixSize, ChoiceType choiceType, DataType dataType){
         ResultGenerator resultGenerator;
         AggregatedResults aggregatedResults = new AggregatedResults();
-        for(int i =0; i<10; i++){
+        int n = 10000/matrixSize;
+        for(int i =0; i<n; i++){
             if(dataType==DataType.FRACTION)
+                n /=1000;
                 resultGenerator = new ResultGenerator<FractionComp>(i+1,matrixSize,choiceType,dataType,new FractionOperation());
-            else if(dataType==DataType.FLOAT)
+            if(dataType==DataType.FLOAT)
                 resultGenerator = new ResultGenerator<FloatComp>(i+1,matrixSize,choiceType,dataType,new FloatOperation());
             else
                 resultGenerator = new ResultGenerator<DoubleComp>(i+1,matrixSize,choiceType,dataType,new DoubleOperation());

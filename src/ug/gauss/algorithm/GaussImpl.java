@@ -31,8 +31,6 @@ public class GaussImpl {
     public MatrixCompatible[] gauss(MatrixCompatible[] vectorB){
         int n = vectorB.length;
         for(int p = 0; p<n; p++){
-
-            //find row/column and swap
             switchRowOrColumn(p,p,vectorB);
             for(int i = p+1; i<n; i++){
                 MatrixCompatible alpha = dataOperation.divide(myMatrix.getValue(i,p),myMatrix.getValue(p,p));

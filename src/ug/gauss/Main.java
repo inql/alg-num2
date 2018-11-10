@@ -11,6 +11,7 @@ import ug.gauss.operations.FractionOperation;
 import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -21,7 +22,11 @@ public class Main {
     }
 
     public static void typicalExecution(){
-        CsvGenerator csvGenerator = new CsvGenerator(new int[] {2,5,10,20,50});
+        int[] testScope = new int[50];
+        for(int i = 10; i<=500; i+=10){
+            testScope[(i/10)-1] = i;
+        }
+        CsvGenerator csvGenerator = new CsvGenerator(testScope);
         csvGenerator.writeCsv();
     }
 }
