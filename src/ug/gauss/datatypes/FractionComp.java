@@ -40,9 +40,10 @@ public class FractionComp implements MatrixCompatible<FractionComp, Fract> {
         return this;
     }
 
-    public void setValue(Fract fract){
+    public FractionComp setValue(Fract fract){
         this.fract = fract;
         simplify();
+        return this;
     }
 
     public FractionComp(BigInteger nominator)

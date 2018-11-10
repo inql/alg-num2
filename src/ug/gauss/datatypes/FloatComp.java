@@ -38,6 +38,12 @@ public class FloatComp implements MatrixCompatible<FloatComp,Float>{
         return this;
     }
 
+    @Override
+    public FloatComp setValue(Float value) {
+        this.value = value;
+        return this;
+    }
+
     public void setValue(float value) {this.value = value;}
 
     @Override

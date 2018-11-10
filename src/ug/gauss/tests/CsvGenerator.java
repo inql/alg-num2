@@ -35,7 +35,7 @@ public class CsvGenerator {
                     for(int matrixSize : matrixScope){
                         for(ChoiceType choiceType : choiceTypes){
                             bufferedWriter.write(matrixSize+";"+choiceType+";");
-                            bufferedWriter.write(getCalculations(matrixSize,ChoiceType.NONE,dataType)+"\n");
+                            bufferedWriter.write(getCalculations(matrixSize,choiceType,dataType)+"\n");
                         }
                         bufferedWriter.write("\n");
 

@@ -25,6 +25,12 @@ public class DoubleComp implements MatrixCompatible<DoubleComp,Double>{
         return this;
     }
 
+    @Override
+    public DoubleComp setValue(Double value) {
+        this.value = value;
+        return this;
+    }
+
     public void setValue(double value){this.value = value;}
 
     @Override
