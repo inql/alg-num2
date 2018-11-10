@@ -81,10 +81,6 @@ public class ResultGenerator<T extends MatrixCompatible> {
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
         System.out.println(dataType+ " "+choiceType+"\n"+myMatrix.columns.length+"x"+myMatrix.rows.length);
-        System.out.println(Arrays.deepToString(vectorX));
-        System.out.println(Arrays.deepToString(result));
-        System.out.println(calculateAbsoluteError(vectorX,result));
-        System.out.println("Czas wykonywania (ms)" + elapsedTime/1000000.00);
         return new Results(calculateAbsoluteError(vectorX,result),elapsedTime/1000000.00);
 
     }

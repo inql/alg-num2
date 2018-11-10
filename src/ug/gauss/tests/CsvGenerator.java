@@ -26,12 +26,11 @@ public class CsvGenerator {
 
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename));
-            bufferedWriter.write("Raport\n\n");
             DataType[] dataTypes = {DataType.FLOAT,DataType.DOUBLE,DataType.FRACTION};
             ChoiceType[] choiceTypes = {ChoiceType.NONE,ChoiceType.PARTIAL,ChoiceType.FULL};
             for(DataType dataType : dataTypes){
                 bufferedWriter.write(dataType.toString()+"\n\n");
-                    bufferedWriter.write("\n"+"n;błąd bezwzględny;czas wykonania;ilość prób\n");
+                    bufferedWriter.write("\n"+"n;wybór elementu;błąd bezwzględny;czas wykonania;ilość prób\n");
                     for(int matrixSize : matrixScope){
                         for(ChoiceType choiceType : choiceTypes){
                             bufferedWriter.write(matrixSize+";"+choiceType+";");
@@ -54,10 +53,11 @@ public class CsvGenerator {
         AggregatedResults aggregatedResults = new AggregatedResults();
         int n = 10000/matrixSize;
         for(int i =0; i<n; i++){
-            if(dataType==DataType.FRACTION)
+            if(dataType==DataType.FRACTION){
                 n /=1000;
                 resultGenerator = new ResultGenerator<FractionComp>(i+1,matrixSize,choiceType,dataType,new FractionOperation());
-            if(dataType==DataType.FLOAT)
+            }
+            else if(dataType==DataType.FLOAT)
                 resultGenerator = new ResultGenerator<FloatComp>(i+1,matrixSize,choiceType,dataType,new FloatOperation());
             else
                 resultGenerator = new ResultGenerator<DoubleComp>(i+1,matrixSize,choiceType,dataType,new DoubleOperation());
