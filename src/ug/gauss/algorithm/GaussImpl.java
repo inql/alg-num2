@@ -14,10 +14,10 @@ import java.math.BigInteger;
 public class GaussImpl {
 
     public MyMatrix myMatrix;
-    final MatrixCompatibleFactory matrixCompatibleFactory;
-    final Randomizer rand;
-    final DataOperation dataOperation;
-    final ChoiceType choiceType;
+    private final MatrixCompatibleFactory matrixCompatibleFactory;
+    private final Randomizer rand;
+    private final DataOperation dataOperation;
+    private final ChoiceType choiceType;
 
     public GaussImpl(MyMatrix myMatrix, MatrixCompatibleFactory matrixCompatibleFactory, DataOperation dataOperation, ChoiceType choiceType) {
         this.myMatrix = myMatrix;
@@ -27,45 +27,8 @@ public class GaussImpl {
         this.choiceType = choiceType;
     }
 
-    //tutaj oskar sie starał ale mu nie wyszło :(
-    //znaczy wyszło ale częściowo
     @SuppressWarnings("unchecked")
-    public MatrixCompatible[] gauss() {
-        int n = myMatrix.rows.length;
-        MatrixCompatible[] resultVector = matrixCompatibleFactory.createArray(n);
-        MatrixCompatible m;
-        System.out.println(myMatrix);
-        for (int i = 1; i < n; i++) {
-//            switchRowOrColumn(i+1,i+1);
-            for (int j = i + 1; j < n + 1; j++) {
-                m = dataOperation.divide(myMatrix.getValue(j, i), myMatrix.getValue(i, i));
-                m = dataOperation.multiply(m, matrixCompatibleFactory.createWithDenominator(new BigInteger("-1"), new BigInteger("1")));
-                for (int k = i + 1; k <= n + 1; k++) {
-                    myMatrix.setValue(j, k, dataOperation.add(
-                            dataOperation.multiply(myMatrix.getValue(i, k), m), myMatrix.getValue(j, k))
-                    );
-                    System.out.println(myMatrix);
-                }
-            }
-        }
-        MatrixCompatible s = null;
-        MatrixCompatible temp;
-        for (int i = n; i >= 1; i--) {
-            s = myMatrix.getValue(i,n+1);
-            for (int j = n; j >= i + 1; j--) {
-                temp = dataOperation.multiply(myMatrix.getValue(i, j), resultVector[myMatrix.columns[j-1]-1]);
-                s = dataOperation.subtract(s, temp);
-            }
-            temp = myMatrix.getValue(i, i);
-            s = dataOperation.divide(s, temp);
-//            resultVector[i - 1] = s;
-            resultVector[myMatrix.columns[i-1]-1] = s;
-        }
-        return resultVector;
-    }
-
-    @SuppressWarnings("unchecked")
-    public MatrixCompatible[] binkus(MatrixCompatible[] vectorB){
+    public MatrixCompatible[] gauss(MatrixCompatible[] vectorB){
         int n = vectorB.length;
         for(int p = 0; p<n; p++){
 

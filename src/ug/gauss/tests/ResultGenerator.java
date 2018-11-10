@@ -76,7 +76,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
 
         MatrixCompatible[] vectorB = getVectorB(myMatrix,vectorX);
 
-        MatrixCompatible[] result = gauss.binkus(vectorB);
+        MatrixCompatible[] result = gauss.gauss(vectorB);
 
         long stopTime = System.nanoTime();
         long elapsedTime = stopTime - startTime;
