@@ -26,6 +26,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
 
     public ResultGenerator(int seed, int matrixSize, ChoiceType choiceType, DataType dataType, DataOperation dataOperation) {
         this.randomizer = new Randomizer(seed);
+        System.out.println(seed);
         this.matrixSize = matrixSize;
         this.choiceType = choiceType;
         this.dataType = dataType;
@@ -55,7 +56,7 @@ public class ResultGenerator<T extends MatrixCompatible> {
 //            vectorX[i]= matrixCompatibleFactory.createWithDenominator(new BigInteger(i+""),BigInteger.ONE);
         }
         myMatrix = new MyMatrix<>((T[][]) matrix);
-
+        System.out.println(myMatrix);
 
 
 

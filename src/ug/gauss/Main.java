@@ -24,10 +24,12 @@ public class Main {
     public static void typicalExecution(){
         long startTime = System.nanoTime();
 
-        int[] testScope = new int[100];
-        for(int i = 10; i<=1000; i+=10){
-            testScope[(i/10)-1] = i;
-        }
+        int[] testScope = new int[2];
+//        for(int i = 10; i<=20; i+=10){
+//            testScope[(i/10)-1] = i;
+//        }
+        testScope[0] = 4;
+        testScope[1] = 5;
         CsvGenerator csvGenerator = new CsvGenerator(testScope);
         csvGenerator.writeCsv();
         long stopTime = System.nanoTime();

@@ -54,7 +54,7 @@ public class CsvGenerator {
         ResultGenerator resultGenerator;
         AggregatedResults aggregatedResults = new AggregatedResults();
         int n = 10000/matrixSize;
-        for(int i =0; i<n; i++){
+        for(int i =0; i<3; i++){
             if(dataType==DataType.DOUBLE){
                 resultGenerator = new ResultGenerator<DoubleComp>(i+1,matrixSize,choiceType,dataType,new DoubleOperation());
             }

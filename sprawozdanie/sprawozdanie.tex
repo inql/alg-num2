@@ -1,20 +1,23 @@
-
 \documentclass[10pt]{article}
 %	options include 12pt or 11pt or 10pt
 %	classes include article, report, book, letter, thesis
 
 \usepackage[a4paper,bindingoffset=0.2in,%
-            left=1in,right=1in,top=0.2in,bottom=0.3in,%
-            footskip=.15in]{geometry}
-            
+left=1in,right=1in,top=0.2in,bottom=0.3in,%
+footskip=.15in]{geometry}
+
 \usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\selectlanguage{polish}
-\usepackage{blindtext}
 \usepackage{pgfplots}
 \usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\newtheorem{hip}{Hipoteza}
+\newtheorem{que}{Pytanie}
+\newtheorem{wn}{Wniosek}
+\newtheorem{wyd}{Zadanie}
 
 \title{Algorytmy numeryczne}
 \author{Zadanie 2 \\ Dawid Bińkuś \& Oskar Bir \& Mateusz Małecki\\grupa 1 tester-programista}
@@ -24,19 +27,70 @@
 \maketitle 
 
 \section{Operacje na macierzach}
-
-
-XD\\
-Tutaj będzie opis zadania, nie? Jak komuś się chce to niech dopisze na brudno, ja ładnie tutaj wrzuce
-
+Sprawozdanie prezentuje analizę wydajności i poprawności implementacji algorytmu eliminacji Gaussa, dla losowej macierzy kwadratowej $A$ i wektora $B$ w układzie liniowym
+$A\cdot X = B.$\\
+Zaimplementowano następujące warianty algorytmu:
+\begin{itemize}
+	\item[G:]bez wyboru elementu podstawowego,
+	\item [PG:]z częściowym wyborem elementu podstawowego,
+	\item [FG:]z peanym wyborem elementu podstawowego.
+\end{itemize}
+Dodatkowo, obliczenia zostały wykonane, używając trzech różny typów reprezentujących liczbę rzeczywistą:
+\begin{itemize}
+	\item[TF:]typ pojedynczej precyzji: \textbf{float}
+	\item[TD:]typ podwójnej precyzji: \textbf{double}
+	\item[TC:]własna implementacja, przechowująca liczbę w postaci ułamka liczb całkowitych: \textbf{fraction}
+\end{itemize}
+$\text{Jako współczynniki macierzy } A \text{ oraz wektora } X \text{ zostały wylosowane liczby zmiennoprzecinkowe z przedziału: }$\\
+$\{\frac{-2^{16}}{2^{16}},\frac{2^{16}-1}{2^{16}}\}$ Następnie wektor $B$ został wyliczony wedługo wzoru $B = A\cdot X$.
+Macierz $A$ i wektor $B$ zostają podane jako parametry do rozwiązania układu równań, wektor $X$ zaś pozostawiamy jako rozwiązanie wzorcowe, za pomocą którego obliczamy błąd wykonanego algorytmu.\\\\
+Program do realizacji testów został wykonany w języku \textit{Java}. Typ danych \textit{TC} został zaimplementowany za pomocą wbudowanego typu całkowitego \emph{BigInteger}. Testy zostały wykonane na macierzach o rozmiarze ${10,20,...,800}$ (float,double) ${10,20...,150}$ (fraction) w ilości prób danych wzorem:\\
+$n = 100\cdot m[m_s[max-i]-1]/m[i]$, gdzie $m$ = tablica wielkości macierzy, $s$ = indeks w tablicy $m$, $max$ = ostatnia wartość w tablicy $m$
+\\
+lub
+\\
+w ilości prób malejącej, wraz z wykonywaniem testów na coraz to większych macierzach.
 \section{Analiza hipotez}
+Rozważmy następujące wykresy (Rysunek\ref{rys})
+Prezentują one błąd bezwzględny wartości w skali logarytmicznej (chyba że jest podane inaczej), wyliczonej za pomocą wcześniej wspomnianych algorytmów wobec wektora wzorcowego $X$.\\
+Cześć z nich prezentuje również czas wykonania algorytmu podany w milisekundach.
 \subsection{Związek czasu wykonywania z wariantem algorytmu eliminacji Gaussa}
+\begin{hip}
+	Dla dowolnego ustalone rozmiaru macierzy czas działania metody Gaussa w kolejnych wersjach (G,PG,FG) rośnie.\label{hip:1}
+\end{hip}
+\begin{wn}
+	Coś...\label{wn:1}
+\end{wn}
 \subsection{Związek błędu obliczeń z wariantem algorytmu eliminacji Gaussa}
-\subsection{Poprawność i wydajnośc własnej arytmetyki}
+\begin{hip}
+	Dla dowolnego ustalonego rozmiaru macierzy błąd uzyskanego wyniku metody Gaussa w kolejnych wersjach (G,PG,FG) maleje.\label{hip:2}
+\end{hip}
+\begin{wn}
+	Coś...\label{wn:2}
+\end{wn}
+\subsection{Poprawność i wydajność własnej arytmetyki}
+\begin{hip}
+	Użycie własnej arytmetyki na ułamkach zapewnia bezbłędne wyniki niezależnie od wariantu metody Gaussa i rozmiaru macierzy.\label{hip:3}
+\end{hip}
+\begin{wn}
+	Coś...\label{wn:3}
+\end{wn}
 \section{Pytania}
 \subsection{Dokładność obliczeń (typ podwójnej precyzji)}
+\begin{que}
+	Jak zależy dokładnośc obliczeń (błąd) od rozmiaru macierzy dla dwóch wybranych
+	przez Ciebie wariantów metody Gaussa gdy obliczenia prowadzone są na typie
+	podwójnej precyzji (TD)?\label{que:1}
+\end{que}
 \subsection{Zależność czasu działania algorytmu od rozmiaru macierzy oraz typu}
+\begin{que}
+	 Jak przy wybranym przez Ciebie wariancie metody Gaussa zależy czas działania
+	algorytmu od rozmiaru macierzy i różnych typów?\label{que:2}
+\end{que}
 \section{Wydajność implementacji}
+\begin{wyd}
+	Podaj czasy rozwiązania układu równań uzyskane dla macierzy o rozmiarze $500$ dla $9$ testowanych wariantów.
+\end{wyd}
 \section{Podział pracy}
 \begin{center}
 	\begin{tabular}{| l | l | l |}
