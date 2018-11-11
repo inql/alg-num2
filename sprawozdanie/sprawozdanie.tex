@@ -123,12 +123,12 @@ Obliczenia zostały wykonane na macierzach o rozmiarze $n$ w przedziale $\{10,20
 	\caption{Wykresy reprezentujące błąd bezwzględny dla różnych sposobów sumowania}
 	\begin{subfigure}{0.5\textwidth}
 		\includegraphics[width=\textwidth]{double_full_none_blad.png}
-		\caption{ \label{Rys2a}}
+		\caption{ \label{Rys3a}}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.5\textwidth}
 		\includegraphics[width=\textwidth]{float_double_fract_full_czas.png}
-		\caption{  \label{Rys2b}}
+		\caption{  \label{Rys3b}}
 	\end{subfigure}
 \end{figure}
 \subsection{Dokładność obliczeń (typ podwójnej precyzji)}
@@ -137,26 +137,56 @@ Obliczenia zostały wykonane na macierzach o rozmiarze $n$ w przedziale $\{10,20
 	przez Ciebie wariantów metody Gaussa gdy obliczenia prowadzone są na typie
 	podwójnej precyzji (TD)?\label{que:1}
 \end{que}
-
+Do odpowiedzi na te pytanie, wybrany został wariant G oraz FG. W tym celu, przeanalizujmy wykres \ref{Rys3a}.
+Wynika z niego, że wraz z wzrostem rozmiaru macierzy, średni błąd bezwzględny rośnie. Jest to spowodowane większą ilością obliczeń potrzebnych do osiągnięcia rozwiązania (przy dużej ilości obliczeń na liczbach wymagających większej precyzji, możliwa jest utrata precyzji). Nagłe wzrosty i spadku błędu są spowodowane wylosowaniem takiego zestawu liczb, które znacząco utrudniały rozwiązanie równania.
 \subsection{Zależność czasu działania algorytmu od rozmiaru macierzy oraz typu}
 \begin{que}
 	 Jak przy wybranym przez Ciebie wariancie metody Gaussa zależy czas działania
 	algorytmu od rozmiaru macierzy i różnych typów?\label{que:2}
 \end{que}
-Do odpowiedzi na te pytanie, wybrany został wariant G oraz FG. W tym celu, przeanalizujmy wykres \ref{Rys2a}.\\
-
+Do odpowiedzi na te pytanie, wybrany został wariant FG dla wszystkich zdefiniowanych wcześniej typów. Na potrzeby analizy czasu wykorzystajmy wykres \ref{Rys3b}. Przedstawia on w skali logarytmicznej średni czas wykonywania w zależności od rozmiaru tablicy. Wywnioskować z niego można, iż czas wykonywania algorytmu Gaussa wraz ze wzrostem rozmiaru tablicy rośnie w sposób wykładniczy.
 \section{Wydajność implementacji}
 \begin{wyd}
 	Podaj czasy rozwiązania układu równań uzyskane dla macierzy o rozmiarze $500$ dla $9$ testowanych wariantów.
 \end{wyd}
+Z powodu ograniczeń sprzętowych, testowanie własnej arytmetyki odbyła się tylko do wielkości macierzy 150.
+By obliczyć kolejne wartości, wykorzystany został wzór wyznaczony za pomocą aproksymacji wielomianowej.\\
+G $y = 1.012030867\cdot 10^{-3} x^4 - 1.270979539\cdot 10^{-1} x^3 + 7.671220016 x^2 - 190.6473966 x + 1419.501062$\\
+PG $y = 1.074913757\cdot 10^{-3} x^4 - 1.425823098\cdot 10^{-1} x^3 + 9.125439696 x^2 - 239.6679003 x + 1865.170906$
+FG $y = 1.426104474\cdot 10^{-3} x^4 - 0.187431069 x^3 + 12.05517905 x^2 - 319.4153988 x + 2506.335399$\\
+
+Czasy wykonania dla rozmiaru macierzy 500 znajdują się w tabeli poniżej:\\
+\begin{center}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\multicolumn{4}{ |c| }{Czasy rozwiązania dla n = 500} \\
+		\hline
+		Typ danych & Wariant & Czas wykonania (ms) & Czas wykonania (h)\\
+		\hline
+		\multirow{3}{*}{Float} & G & 388.13750325 & N/A \\
+		& PG & 387.1670819  & N/A \\
+		& FG & 518.17535205 & N/A\\
+		\hline
+		\multirow{3}{*}{Double} & G & 723.1210641 & N/A \\
+		& PG & 727.3498923  & N/A\\
+		& FG & 1340.82832105  & N/A\\
+		\hline
+		\multirow{3}{*}{Fraction} & G & 49188585.756762 & 13.663496043545 \\
+		& PG & 51522712.232256 & 14.31186450896\\
+		& FG & 68559239.398499  & 19.04423316624972\\
+		\hline
+	\end{tabular}
+\end{center}
+
+
 \section{Podział pracy}
 \centering
 	\begin{tabular}{| l | l | l |}
 		\hline
 		\textbf{Dawid Bińkuś} & \textbf{Oskar Bir} & \textbf{Mateusz Małecki} \\ \hline
-		Struktura projektu & Ten też coś robił & A ten to w ogóle bardzo dużo \\ \hline
-		Przygotowanie sprawozdania & Coś & Coś\\ \hline
-		Implementacja algorytmu Gaussa w wariantach PG i FG & Coś & Coś \\ \hline
+		Struktura projektu & Ten też coś robił & Implementacja typu własnej precyzji \\ \hline
+		Przygotowanie sprawozdania & Coś & Operacje na macierzach\\ \hline
+		Implementacja algorytmu Gaussa w wariantach PG i FG & Coś & Praca nad strukturą projektu \\ \hline
 		
 		
 	\end{tabular}
