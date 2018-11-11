@@ -15,6 +15,7 @@ footskip=.15in]{geometry}
 \usepackage{amsmath}
 \usepackage{subcaption}
 \usepackage{multirow}
+\usepackage{hyperref}
 \newtheorem{hip}{Hipoteza}
 \newtheorem{que}{Pytanie}
 \newtheorem{wn}{Wniosek}
@@ -42,13 +43,12 @@ Dodatkowo, obliczenia zostały wykonane, używając trzech różny typów reprez
 	\item[TD:]typ podwójnej precyzji: \textbf{double}
 	\item[TC:]własna implementacja, przechowująca liczbę w postaci ułamka liczb całkowitych: \textbf{fraction}
 \end{itemize}
-$\text{Jako współczynniki macierzy } A \text{ oraz wektora } X \text{ zostały wylosowane liczby zmiennoprzecinkowe z przedziału: }$\\
+$\text{Jako współczynniki macierzy } A \text{ oraz wektora } X$ zostały wylosowane liczby zmiennoprzecinkowe z przedziału:
 $[\frac{-2^{16}}{2^{16}},\frac{2^{16}-1}{2^{16}}]$ Następnie wektor $B$ został wyliczony wedługo wzoru $B = A\cdot X$.
 Macierz $A$ i wektor $B$ zostają podane jako parametry do rozwiązania układu równań, wektor $X$ zaś pozostawiamy jako rozwiązanie wzorcowe, za pomocą którego obliczamy błąd wykonanego algorytmu.\\\\
-Program do realizacji testów został wykonany w języku \textit{Java}. Typ danych \textit{TC} został zaimplementowany za pomocą wbudowanego typu całkowitego \emph{BigInteger}. Testy zostały wykonane na macierzach o rozmiarze $\{10,20,...,500\}$ (float,double) $\{10,20...,150\}$ (fraction) 
-w ilości prób malejącej, wraz z wykonywaniem testów na coraz to większych macierzach. Wyniki zostały zagregowane za pomocą średniej arytmetycznej.
+Program do realizacji testów został wykonany w języku \textit{Java}. Typ danych \textit{TC} został zaimplementowany za pomocą wbudowanego typu całkowitego \emph{BigInteger}. Testy zostały wykonane na macierzach o rozmiarze $\{10,20,...,500\}$ (\textbf{float},\textbf{double}) $\{10,20...,150\}$ (\textbf{fraction}) 
+w ilości prób malejącej, wraz z wykonywaniem testów na coraz to większych macierzach. Wyniki zostały zagregowane za pomocą średniej arytmetycznej. Wykonywanie testów zajęło około godziny, w zależności od komputera na którym był uruchamiany (50-70 minut)
 \section{Analiza hipotez}
-Rozważmy następujące wykresy (Rysunek\ref{rys})
 \begin{figure}[h]
 	\caption{Wykresy reprezentujące błąd bezwzględny oraz czas wykonania dla różnych typów danych oraz różnych wariantów algorytmu\label{rys}}
 	\begin{subfigure}{0.5\textwidth}
@@ -88,17 +88,15 @@ Rozważmy następujące wykresy (Rysunek\ref{rys})
 \caption{Tabela prezentująca porównanie wyników dla typu Fractial}
 \label{tab:1}
 \end{figure}
-Prezentują one błąd bezwzględny wartości w skali logarytmicznej (chyba że jest podane inaczej), wyliczonej za pomocą wcześniej wspomnianych algorytmów wobec wektora wzorcowego $X$.\\
-Część z nich prezentuje również czas wykonania algorytmu podany w milisekundach.
 \subsection{Związek czasu wykonywania z wariantem algorytmu eliminacji Gaussa}
 \begin{hip}
 	Dla dowolnego ustalone rozmiaru macierzy czas działania metody Gaussa w kolejnych wersjach (G,PG,FG) rośnie.\label{hip:1}
 \end{hip}
-Przeanalizujmy wykresy \ref{Rys1a} oraz \ref{Rys1d}. Zaprezentowano na nich porównanie czasu wykonania w zależności od wybranego typu danych oraz wariantu algorytmu. Niezależnie od typu danych można zauważyć pewną tendencję.\\
+Przeanalizujmy wykresy \ref{Rys1a} oraz \ref{Rys1d}. Zaprezentowano na nich porównanie czasu wykonania w zależności od wybranego typu danych oraz wariantu algorytmu. Niezależnie od typu danych można zauważyć pewną tendencję.
 Po pierwsze, wraz z wzrostem rozmiaru macierzy użytej do rozwiązania układu równań, można zauważyć znaczący wzrost czasu wykonywania dla wariantu FG względem wariantów G i PG. Wykonując operacje na małych macierzach proces rozwiązywania nie jest na tyle skomplikowany by w jakikolwiek sposób wpływać na wydajność.
 Drugą interesującą rzeczą natomiast jest, brak znaczących różnic między wariantem G i PG. By bardziej uwidocznić to zjawisko przeanalizujmy wykres \ref{Rys1c}, który prezentuje różnicę między cześciowym wyborem elementu podstawowego a brakiem wyboru w przypadku typu danych float. Wynikają z niego dwie rzeczy: różnica między wykonywaniem tych dwóch argumentów jest praktycznie nieznacząca (zaledwie kilka milisekund). Drugą rzeczą jest natomiast fakt, że wariant PG zdaje się być nieznacznie wolniejszy od wariantu G (Wraz z wzrostem rozmiaru macierzy okazuje sie w niektorych wypadkach nawet wydajniejszy niz standardowy algorytm Gaussa)
 \begin{wn}
-	Hipoteza okazuje się być cześciowo prawidziwa. Wariant FG powoduje znaczny wzrost czasu wykonania dla wszystkich wykorzystanych typów danych. Interesujący natomiast jest brak znaczących różnic między wariantami PG i G, który jest spowodowany niewielkim wpływem na czas wykonania (w wariancie PG sprawdzamy tylko $n$ wartości w przeciwieństwie do $n*n$ w wariancie FG).\label{wn:1}
+	Hipoteza okazuje się być cześciowo prawidziwa. Wariant FG powoduje znaczny wzrost czasu wykonania dla wszystkich wykorzystanych typów danych. Interesujący natomiast jest brak znaczących różnic między wariantami PG i G, który jest spowodowany niewielkim wpływem na czas wykonania (w wariancie PG sprawdzamy tylko od $n$ wartości w przeciwieństwie do $n*n$ w wariancie FG).\label{wn:1}
 \end{wn}
 \subsection{Związek błędu obliczeń z wariantem algorytmu eliminacji Gaussa}
 \begin{hip}
@@ -106,15 +104,15 @@ Drugą interesującą rzeczą natomiast jest, brak znaczących różnic między 
 \end{hip}
 Przeanalizujmy wykres \ref{Rys1b}. Prezentuje on zestawienie błędu bezwzględnego rozwiązania układu równań względem wektora $X$ dla typów danych float i double. W przypadku obu typów danych najmniej dokładny jest wariant G (różnice między nimi są efektem zastosowanej precyzji w tych typach). W przypadku wariantów PG i FG można zauważyć iż mają one bardzo zbliżoną dokładność z małą przewagą wariantu PG - jego dodatkowym atutem jest większa stabliność wyników. W sytuacjach gdy wariant G i PG mają problemy z bardziej skomplikowanymi równaniami (charakterystyczne wzrosty na wykresie) - PG radzi sobie zdecydowanie lepiej.
 \begin{wn}
-	Hipoteza okazuje się być prawdziwa. Wariant PG zapewnia największą dokładność i stabilność wyników względem nieco gorszego FG oraz G, w którym różnica błędu sięga nawet dwóch rzędów wielkości. Jednakże biorąc pod uwagę \ref{wn:1} najbardziej opłacalnym w kategorii dokładność/wydajność okazuje się być wariant PG jako iż różnice błędu między nim a pełnym wyborem zdają się być akceptowalne gdy weźmiemy pod uwagę znacznie szybszy czas działania.\label{wn:2}
+	Hipoteza okazuje się być prawdziwa. Wariant PG zapewnia największą dokładność i stabilność wyników względem nieco gorszego FG oraz G, w którym różnica błędu sięga nawet dwóch rzędów wielkości. Jednakże biorąc pod uwagę wniosek \ref{wn:1} najbardziej opłacalnym w kategorii dokładność/wydajność okazuje się być wariant PG jako iż różnice błędu między nim a pełnym wyborem zdają się być akceptowalne gdy weźmiemy pod uwagę znacznie szybszy czas działania.\label{wn:2}
 \end{wn}
 \subsection{Poprawność własnej arytmetyki}
 \begin{hip}
 	Użycie własnej arytmetyki na ułamkach zapewnia bezbłędne wyniki niezależnie od wariantu metody Gaussa i rozmiaru macierzy.\label{hip:3}
 \end{hip}
-Przeanalizujmy tabelę \ref{tab:1}\\
+Przeanalizujmy tabelę \ref{tab:1}
 Prezentuje ona wyniki z użyciem własnej arytmetyki dla wszystkich wariantów algorytmu.
-Obliczenia zostały wykonane na macierzach o rozmiarze $n$ w przedziale $\{10,20,...,150\}$ z racji ograniczeń sprzętowych. Rozpatrując wyniki testów, można dość do wniosku, że użycie własnej artymetyki całkowicie eliminuje błąd obliczeń. Jest to spowodowane charakterystyką typu BigInteger. Teoretycznie, typ ten nie ma żadnego limitu przechowywanych danych - w zależności od potrzeb zajmuje potrzebną ilość pamięci w komputerze. Jedynym ogranicznikiem w przypadku typu BigInteger jest pamięć naszego komputera. Dodając do tego sposób przechowywania ułamków ($\frac{licznik}{mianownik}$) jesteśmy w stanie wykonywać bardzo skomplikowane równania bez utraty precyzji.
+Obliczenia zostały wykonane na macierzach o rozmiarze $n$ w przedziale $\{10,20,...,150\}$ z racji ograniczeń sprzętowych. Rozpatrując wyniki testów, można dość do wniosku, że użycie własnej artymetyki całkowicie eliminuje błąd obliczeń. Jest to spowodowane charakterystyką typu \textit{BigInteger}. Teoretycznie, typ ten nie ma żadnego limitu przechowywanych danych - w zależności od potrzeb zajmuje potrzebną ilość pamięci w komputerze. Jedynym jego ogranicznikiem jest pamięć naszego komputera. Dodając do tego sposób przechowywania ułamków ($\frac{licznik}{mianownik}$) jesteśmy w stanie wykonywać bardzo skomplikowane równania bez utraty precyzji.
 \begin{wn}
 	Hipoteza 3 okazuje się być prawdziwa. Użycie własnej arytmetyki zapewnia teoretycznie największą możliwą dokładność przechowywanych danych w porównaniu do zwykłych typów zmiennoprzecinkowych. Dzięki temu, wszelkie operacje wykonywane na typie Fraction są wykonywane z dokładnością równą 0\label{wn:3}
 \end{wn}
@@ -150,11 +148,11 @@ Do odpowiedzi na te pytanie, wybrany został wariant FG dla wszystkich zdefiniow
 	Podaj czasy rozwiązania układu równań uzyskane dla macierzy o rozmiarze $500$ dla $9$ testowanych wariantów.
 \end{wyd}
 Z powodu ograniczeń sprzętowych, testowanie własnej arytmetyki odbyła się tylko do wielkości macierzy 150.
-By obliczyć kolejne wartości, wykorzystany został wzór wyznaczony za pomocą aproksymacji wielomianowej.\\
-G $y = 1.012030867\cdot 10^{-3} x^4 - 1.270979539\cdot 10^{-1} x^3 + 7.671220016 x^2 - 190.6473966 x + 1419.501062$\\
-PG $y = 1.074913757\cdot 10^{-3} x^4 - 1.425823098\cdot 10^{-1} x^3 + 9.125439696 x^2 - 239.6679003 x + 1865.170906$
-FG $y = 1.426104474\cdot 10^{-3} x^4 - 0.187431069 x^3 + 12.05517905 x^2 - 319.4153988 x + 2506.335399$\\
-
+By obliczyć kolejne wartości, wykorzystany został wzór wyznaczony za pomocą aproksymacji wielomianowej danej następująco:\\
+G: $t = 1.012030867\cdot 10^{-3} n^4 - 1.270979539\cdot 10^{-1} n^3 + 7.671220016 n^2 - 190.6473966 n + 1419.501062$\\
+PG: $t = 1.074913757\cdot 10^{-3} n^4 - 1.425823098\cdot 10^{-1} n^3 + 9.125439696 n^2 - 239.6679003 n + 1865.170906$
+FG: $t = 1.426104474\cdot 10^{-3} n^4 - 0.187431069 n^3 + 12.05517905 n^2 - 319.4153988 n + 2506.335399$\\
+\textit{Źródło:} \url{http://www.xuru.org/rt/PR.asp}\\
 Czasy wykonania dla rozmiaru macierzy 500 znajdują się w tabeli poniżej:\\
 \begin{center}
 	\begin{tabular}{|l|l|l|l|}
@@ -181,12 +179,14 @@ Czasy wykonania dla rozmiaru macierzy 500 znajdują się w tabeli poniżej:\\
 
 \section{Podział pracy}
 \centering
-	\begin{tabular}{| l | l | l |}
+	\begin{tabular}{| p{4.4cm} | p{4.4cm} | p{4.4cm} |}
 		\hline
 		\textbf{Dawid Bińkuś} & \textbf{Oskar Bir} & \textbf{Mateusz Małecki} \\ \hline
-		Struktura projektu & Ten też coś robił & Implementacja typu własnej precyzji \\ \hline
-		Przygotowanie sprawozdania & Coś & Operacje na macierzach\\ \hline
-		Implementacja algorytmu Gaussa w wariantach PG i FG & Coś & Praca nad strukturą projektu \\ \hline
+		Praca nad strukturą projektu. & Analiza algorytmu Gaussa oraz implementacja wariantu G & Implementacja typu własnej precyzji \\ \hline
+		Przygotowanie sprawozdania & Przygotowanie testów i ich uruchomienie & Operacje na macierzach\\ \hline
+		Implementacja algorytmu Gaussa w wariantach PG i FG & Analiza danych oraz określenie czasu pracy typu Fraction & Praca nad strukturą projektu \\ \hline
+		Implementacja generycznej klasy MyMatrix & Przygotowanie wykresów końcowych & Implementacja generycznej klasy MyMatrix \\ \hline
+		
 		
 		
 	\end{tabular}
