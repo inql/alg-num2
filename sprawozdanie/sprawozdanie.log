@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 19:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 21:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1173,7 +1173,12 @@ Overfull \hbox (2.22221pt too wide) in paragraph at lines 124--133
  []
 
 
-Overfull \hbox (49.94226pt too wide) in paragraph at lines 151--160
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
+
+ []
+
+
+Overfull \hbox (49.94226pt too wide) in paragraph at lines 154--163
  [] 
  []
 
@@ -1199,7 +1204,7 @@ b></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type
 1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/s
 hare/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/publi
 c/lm/lmsy7.pfb>
-Output written on sprawozdanie.pdf (3 pages, 501991 bytes).
+Output written on sprawozdanie.pdf (3 pages, 502088 bytes).
 PDF statistics:
  81 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream
