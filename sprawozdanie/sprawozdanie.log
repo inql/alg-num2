@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 19:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 19:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1144,8 +1144,8 @@ File: fraction_czas.png Graphic file (type png)
 Package pdftex.def Info: fraction_czas.png  used on input line 70.
 (pdftex.def)             Requested size: 219.25706pt x 123.11494pt.
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 64--73
-[]$[]$  $[]$ 
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 64--88
+[]$[]$  $[]$
  []
 
 
@@ -1156,35 +1156,53 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./float_double_czas.pn
 g (PNG copy)> <./float_double_blad.png (PNG copy)> <./float_roznica_czas.png (P
 NG copy)> <./fraction_czas.png (PNG copy)>]
-Overfull \hbox (49.94226pt too wide) in paragraph at lines 139--148
+<double_full_none_blad.png, id=29, 830.35219pt x 550.30594pt>
+File: double_full_none_blad.png Graphic file (type png)
+<use double_full_none_blad.png>
+Package pdftex.def Info: double_full_none_blad.png  used on input line 125.
+(pdftex.def)             Requested size: 219.25706pt x 145.30977pt.
+<float_double_fract_full_czas.png, id=30, 954.56625pt x 486.31688pt>
+File: float_double_fract_full_czas.png Graphic file (type png)
+<use float_double_fract_full_czas.png>
+Package pdftex.def Info: float_double_fract_full_czas.png  used on input line 1
+30.
+(pdftex.def)             Requested size: 219.25706pt x 111.70212pt.
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 124--133
+[]$[]$  $[]$ 
+ []
+
+
+Overfull \hbox (49.94226pt too wide) in paragraph at lines 151--160
  [] 
  []
 
-[3] (./sprawozdanie.aux) ) 
+[3 <./double_full_none_blad.png (PNG copy)> <./float_double_fract_full_czas.png
+ (PNG copy)>] (./sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 24560 strings out of 492982
- 609714 string characters out of 6134895
- 788490 words of memory out of 5000000
- 27673 multiletter control sequences out of 15000+600000
+ 24574 strings out of 492982
+ 610063 string characters out of 6134895
+ 791490 words of memory out of 5000000
+ 27685 multiletter control sequences out of 15000+600000
  60441 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,10n,96p,729b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/
-usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/
-lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/tex
-mf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmb
-x12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7
-.pfb>
-Output written on sprawozdanie.pdf (3 pages, 406847 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mat
+hit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/
+enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr
+/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy7.pfb>
+Output written on sprawozdanie.pdf (3 pages, 501991 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 81 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

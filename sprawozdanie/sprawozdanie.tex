@@ -43,7 +43,7 @@ Dodatkowo, obliczenia zostały wykonane, używając trzech różny typów reprez
 	\item[TC:]własna implementacja, przechowująca liczbę w postaci ułamka liczb całkowitych: \textbf{fraction}
 \end{itemize}
 $\text{Jako współczynniki macierzy } A \text{ oraz wektora } X \text{ zostały wylosowane liczby zmiennoprzecinkowe z przedziału: }$\\
-$\{\frac{-2^{16}}{2^{16}},\frac{2^{16}-1}{2^{16}}\}$ Następnie wektor $B$ został wyliczony wedługo wzoru $B = A\cdot X$.
+$[\frac{-2^{16}}{2^{16}},\frac{2^{16}-1}{2^{16}}]$ Następnie wektor $B$ został wyliczony wedługo wzoru $B = A\cdot X$.
 Macierz $A$ i wektor $B$ zostają podane jako parametry do rozwiązania układu równań, wektor $X$ zaś pozostawiamy jako rozwiązanie wzorcowe, za pomocą którego obliczamy błąd wykonanego algorytmu.\\\\
 Program do realizacji testów został wykonany w języku \textit{Java}. Typ danych \textit{TC} został zaimplementowany za pomocą wbudowanego typu całkowitego \emph{BigInteger}. Testy zostały wykonane na macierzach o rozmiarze $\{10,20,...,500\}$ (float,double) $\{10,20...,150\}$ (fraction) 
 w ilości prób malejącej, wraz z wykonywaniem testów na coraz to większych macierzach. Wyniki zostały zagregowane za pomocą średniej arytmetycznej.
@@ -70,6 +70,23 @@ Rozważmy następujące wykresy (Rysunek\ref{rys})
 		\includegraphics[width=\textwidth]{fraction_czas.png}
 		\caption{ \label{Rys1d}}
 	\end{subfigure}
+	\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| }
+	\hline
+	\multicolumn{10}{ |c| }{Fractial - porównanie} \\
+	n & \multicolumn{3}{|c|}{Błąd bezwzględny} & \multicolumn{3}{|c|}{Czas wykonania} & \multicolumn{3}{|c|}{Ilość prób}\\
+	\hline
+	Wariant -> & G & PG & FG & G & PG & FG & \multicolumn{3}{|c|}{}\\
+	\hline
+	10 & 0 & 0 & 0 & 2.39034797 & 2.70733242 & 2.62618003 & \multicolumn{3}{|c|}{100} \\
+	20 & 0 & 0 & 0 & 26.08455804 & 28.1878754 & 37.95241776 &\multicolumn{3}{|c|}{25} \\
+	50 & 0 & 0 & 0 & 1353.7187555 & 1418.31329225 & 1935.74870875 & \multicolumn{3}{|c|}{4} \\
+	100 & 0 & 0 & 0 & 33360.40558 & 34285.387315 & 46668.033684 & \multicolumn{3}{|c|}{1} \\
+	130 & 0 & 0 & 0 & 115763.860973 & 118493.372512 & 160113.679247 & \multicolumn{3}{|c|}{1} \\
+	150 & 0 & 0 & 0 & 228794.993101 & 234503.568338 &  315739.697225 & \multicolumn{3}{|c|}{1} \\
+	\hline
+\end{tabular}
+\caption{Tabela prezentująca porównanie wyników dla typu Fractial}
+\label{tab:1}
 \end{figure}
 Prezentują one błąd bezwzględny wartości w skali logarytmicznej (chyba że jest podane inaczej), wyliczonej za pomocą wcześniej wspomnianych algorytmów wobec wektora wzorcowego $X$.\\
 Część z nich prezentuje również czas wykonania algorytmu podany w milisekundach.
@@ -95,30 +112,25 @@ Przeanalizujmy wykres \ref{Rys1b}. Prezentuje on zestawienie błędu bezwzględn
 \begin{hip}
 	Użycie własnej arytmetyki na ułamkach zapewnia bezbłędne wyniki niezależnie od wariantu metody Gaussa i rozmiaru macierzy.\label{hip:3}
 \end{hip}
-Przeanalizujmy następującą tabelę:\\
-\begin{table}
-	\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| }
-	\hline
-	\multicolumn{10}{ |c| }{Fractial - porównanie} \\
-	n & \multicolumn{3}{|c|}{Błąd bezwzględny} & \multicolumn{3}{|c|}{Czas wykonania} & \multicolumn{3}{|c|}{Ilość prób}\\
-	\hline
-	Wariant -> & G & PG & FG & G & PG & FG & \multicolumn{3}{|c|}{}\\
-	\hline
-	10 & 0 & 0 & 0 & 2.39034797 & 2.70733242 & 2.62618003 & \multicolumn{3}{|c|}{100} \\
-	20 & 0 & 0 & 0 & 26.08455804 & 28.1878754 & 37.95241776 &\multicolumn{3}{|c|}{25} \\
-	50 & 0 & 0 & 0 & 1353.7187555 & 1418.31329225 & 1935.74870875 & \multicolumn{3}{|c|}{4} \\
-	100 & 0 & 0 & 0 & 33360.40558 & 34285.387315 & 46668.033684 & \multicolumn{3}{|c|}{1} \\
-	130 & 0 & 0 & 0 & 115763.860973 & 118493.372512 & 160113.679247 & \multicolumn{3}{|c|}{1} \\
-	150 & 0 & 0 & 0 & 228794.993101 & 234503.568338 &  315739.697225 & \multicolumn{3}{|c|}{1} \\
-	\hline
-\end{tabular}
-\end{table}
+Przeanalizujmy tabelę \ref{tab:1}\\
 Prezentuje ona wyniki z użyciem własnej arytmetyki dla wszystkich wariantów algorytmu.
 Obliczenia zostały wykonane na macierzach o rozmiarze $n$ w przedziale $\{10,20,...,150\}$ z racji ograniczeń sprzętowych. Rozpatrując wyniki testów, można dość do wniosku, że użycie własnej artymetyki całkowicie eliminuje błąd obliczeń. Jest to spowodowane charakterystyką typu BigInteger. Teoretycznie, typ ten nie ma żadnego limitu przechowywanych danych - w zależności od potrzeb zajmuje potrzebną ilość pamięci w komputerze. Jedynym ogranicznikiem w przypadku typu BigInteger jest pamięć naszego komputera. Dodając do tego sposób przechowywania ułamków ($\frac{licznik}{mianownik}$) jesteśmy w stanie wykonywać bardzo skomplikowane równania bez utraty precyzji.
 \begin{wn}
 	Hipoteza 3 okazuje się być prawdziwa. Użycie własnej arytmetyki zapewnia teoretycznie największą możliwą dokładność przechowywanych danych w porównaniu do zwykłych typów zmiennoprzecinkowych. Dzięki temu, wszelkie operacje wykonywane na typie Fraction są wykonywane z dokładnością równą 0\label{wn:3}
 \end{wn}
 \section{Pytania}
+\begin{figure}[h]
+	\caption{Wykresy reprezentujące błąd bezwzględny dla różnych sposobów sumowania}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{double_full_none_blad.png}
+		\caption{ \label{Rys2a}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{float_double_fract_full_czas.png}
+		\caption{  \label{Rys2b}}
+	\end{subfigure}
+\end{figure}
 \subsection{Dokładność obliczeń (typ podwójnej precyzji)}
 \begin{que}
 	Jak zależy dokładnośc obliczeń (błąd) od rozmiaru macierzy dla dwóch wybranych
