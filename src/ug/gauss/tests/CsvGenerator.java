@@ -33,6 +33,8 @@ public class CsvGenerator {
                     bufferedWriter.write("\n"+"n;wybór elementu;błąd bezwzględny;czas wykonania;ilość prób\n");
                     for(int matrixSize : matrixScope){
                         for(ChoiceType choiceType : choiceTypes){
+                            if(dataType == DataType.FRACTION)
+                                continue;
                             bufferedWriter.write(matrixSize+";"+choiceType+";");
                             bufferedWriter.write(getCalculations(matrixSize,choiceType,dataType)+"\n");
                         }
@@ -53,14 +55,15 @@ public class CsvGenerator {
         AggregatedResults aggregatedResults = new AggregatedResults();
         int n = 10000/matrixSize;
         for(int i =0; i<n; i++){
-            if(dataType==DataType.FRACTION){
-                n /=1000;
-                resultGenerator = new ResultGenerator<FractionComp>(i+1,matrixSize,choiceType,dataType,new FractionOperation());
+            if(dataType==DataType.DOUBLE){
+                resultGenerator = new ResultGenerator<DoubleComp>(i+1,matrixSize,choiceType,dataType,new DoubleOperation());
             }
             else if(dataType==DataType.FLOAT)
                 resultGenerator = new ResultGenerator<FloatComp>(i+1,matrixSize,choiceType,dataType,new FloatOperation());
-            else
-                resultGenerator = new ResultGenerator<DoubleComp>(i+1,matrixSize,choiceType,dataType,new DoubleOperation());
+            else{
+                n /=1000;
+                resultGenerator = new ResultGenerator<FractionComp>(i+1,matrixSize,choiceType,dataType,new FractionOperation());
+            }
             aggregatedResults.updateAggregatedResults(resultGenerator.doTests());
         }
         aggregatedResults.divideByExecutionCount();

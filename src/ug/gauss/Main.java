@@ -24,8 +24,8 @@ public class Main {
     public static void typicalExecution(){
         long startTime = System.nanoTime();
 
-        int[] testScope = new int[50];
-        for(int i = 10; i<=500; i+=10){
+        int[] testScope = new int[100];
+        for(int i = 10; i<=1000; i+=10){
             testScope[(i/10)-1] = i;
         }
         CsvGenerator csvGenerator = new CsvGenerator(testScope);
