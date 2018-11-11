@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 18:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 19:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -929,27 +929,34 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \c@subfigure=\count132
 \c@subtable=\count133
 )
-\c@hip=\count134
-\c@que=\count135
-\c@wn=\count136
-\c@wyd=\count137
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip46
+\multirow@cntb=\count134
+\multirow@dima=\skip47
+\bigstrutjot=\dimen194
+)
+\c@hip=\count135
+\c@que=\count136
+\c@wn=\count137
+\c@wyd=\count138
 
 (./sprawozdanie.aux)
 \openout1 = `sprawozdanie.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 27.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -990,16 +997,16 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count138
-\scratchdimen=\dimen194
+\scratchcounter=\count139
+\scratchdimen=\dimen195
 \scratchbox=\box40
-\nofMPsegments=\count139
-\nofMParguments=\count140
+\nofMPsegments=\count140
+\nofMParguments=\count141
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count141
-\MPscratchDim=\dimen195
-\MPnumerator=\count142
-\makeMPintoPDFobject=\count143
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen196
+\MPnumerator=\count143
+\makeMPintoPDFobject=\count144
 \everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1058,86 +1065,86 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
 your preamble.
- on input line 26.
+ on input line 27.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 27.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 28.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 27.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 28.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 27.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 28.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 27.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 28.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 27.
+(Font)              <12> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 27.
+(Font)              <8> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 27.
+(Font)              <6> on input line 28.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 30.
+(Font)              <10> on input line 31.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 30.
+(Font)              <7> on input line 31.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 30.
+(Font)              <5> on input line 31.
 
-Overfull \hbox (2.44206pt too wide) in paragraph at lines 30--33
+Overfull \hbox (2.44206pt too wide) in paragraph at lines 31--34
 \T1/lmr/m/n/10 Sprawozdanie pre-zen-tuje ana-liz¦ wy-daj-no-±ci i po-praw-no-±c
 i im-ple-men-ta-cji al-go-rytmu eli-mi-na-cji Gaussa,
  []
 
 
-Overfull \hbox (43.02795pt too wide) in paragraph at lines 44--49
+Overfull \hbox (43.02795pt too wide) in paragraph at lines 45--50
 $[]\OML/lmm/m/it/10 A[]X[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--49
+Underfull \hbox (badness 10000) in paragraph at lines 45--50
 
  []
 
 <float_double_czas.png, id=4, 807.7678pt x 487.06969pt>
 File: float_double_czas.png Graphic file (type png)
 <use float_double_czas.png>
-Package pdftex.def Info: float_double_czas.png  used on input line 54.
+Package pdftex.def Info: float_double_czas.png  used on input line 55.
 (pdftex.def)             Requested size: 219.25706pt x 132.20175pt.
 <float_double_blad.png, id=5, 788.9475pt x 442.65375pt>
 File: float_double_blad.png Graphic file (type png)
 <use float_double_blad.png>
-Package pdftex.def Info: float_double_blad.png  used on input line 59.
+Package pdftex.def Info: float_double_blad.png  used on input line 60.
 (pdftex.def)             Requested size: 219.25706pt x 123.01685pt.
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 53--62
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 54--63
 []$[]$  $[]$ 
  []
 
 <float_roznica_czas.png, id=6, 455.45157pt x 255.95625pt>
 File: float_roznica_czas.png Graphic file (type png)
 <use float_roznica_czas.png>
-Package pdftex.def Info: float_roznica_czas.png  used on input line 64.
+Package pdftex.def Info: float_roznica_czas.png  used on input line 65.
 (pdftex.def)             Requested size: 219.25706pt x 123.22081pt.
 <fraction_czas.png, id=7, 825.83531pt x 463.7325pt>
 File: fraction_czas.png Graphic file (type png)
 <use fraction_czas.png>
-Package pdftex.def Info: fraction_czas.png  used on input line 69.
+Package pdftex.def Info: fraction_czas.png  used on input line 70.
 (pdftex.def)             Requested size: 219.25706pt x 123.11494pt.
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 63--72
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 64--73
 []$[]$  $[]$ 
  []
 
@@ -1146,37 +1153,38 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (49.94226pt too wide) in paragraph at lines 117--126
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./float_double_czas.pn
+g (PNG copy)> <./float_double_blad.png (PNG copy)> <./float_roznica_czas.png (P
+NG copy)> <./fraction_czas.png (PNG copy)>]
+Overfull \hbox (49.94226pt too wide) in paragraph at lines 139--148
  [] 
  []
 
-[2 <./float_double_czas.png (PNG copy)> <./float_double_blad.png (PNG copy)> <.
-/float_roznica_czas.png (PNG copy)> <./fraction_czas.png (PNG copy)>]
-(./sprawozdanie.aux) ) 
+[3] (./sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 24508 strings out of 492982
- 608899 string characters out of 6134895
- 785490 words of memory out of 5000000
- 27625 multiletter control sequences out of 15000+600000
+ 24560 strings out of 492982
+ 609714 string characters out of 6134895
+ 788490 words of memory out of 5000000
+ 27673 multiletter control sequences out of 15000+600000
  60441 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,9n,96p,729b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/shar
-e/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
-thsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/f
-onts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
-i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmsy7.pfb>
-Output written on sprawozdanie.pdf (2 pages, 395133 bytes).
+ 62i,10n,96p,729b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/
+usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/
+lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/tex
+mf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmb
+x12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7
+.pfb>
+Output written on sprawozdanie.pdf (3 pages, 406849 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 79 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

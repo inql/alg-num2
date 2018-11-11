@@ -14,6 +14,7 @@ footskip=.15in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{subcaption}
+\usepackage{multirow}
 \newtheorem{hip}{Hipoteza}
 \newtheorem{que}{Pytanie}
 \newtheorem{wn}{Wniosek}
@@ -80,21 +81,42 @@ Przeanalizujmy wykresy \ref{Rys1a} oraz \ref{Rys1d}. Zaprezentowano na nich por�
 Po pierwsze, wraz z wzrostem rozmiaru macierzy użytej do rozwiązania układu równań, można zauważyć znaczący wzrost czasu wykonywania dla wariantu FG względem wariantów G i PG. Wykonując operacje na małych macierzach proces rozwiązywania nie jest na tyle skomplikowany by w jakikolwiek sposób wpływać na wydajność.
 Drugą interesującą rzeczą natomiast jest, brak znaczących różnic między wariantem G i PG. By bardziej uwidocznić to zjawisko przeanalizujmy wykres \ref{Rys1c}, który prezentuje różnicę między cześciowym wyborem elementu podstawowego a brakiem wyboru w przypadku typu danych float. Wynikają z niego dwie rzeczy: różnica między wykonywaniem tych dwóch argumentów jest praktycznie nieznacząca (zaledwie kilka milisekund). Drugą rzeczą jest natomiast fakt, że wariant PG zdaje się być nieznacznie wolniejszy od wariantu G (Wraz z wzrostem rozmiaru macierzy okazuje sie w niektorych wypadkach nawet wydajniejszy niz standardowy algorytm Gaussa)
 \begin{wn}
-	Coś...\label{wn:1}
+	Hipoteza okazuje się być cześciowo prawidziwa. Wariant FG powoduje znaczny wzrost czasu wykonania dla wszystkich wykorzystanych typów danych. Interesujący natomiast jest brak znaczących różnic między wariantami PG i G, który jest spowodowany niewielkim wpływem na czas wykonania (w wariancie PG sprawdzamy tylko $n$ wartości w przeciwieństwie do $n*n$ w wariancie FG).\label{wn:1}
 \end{wn}
 \subsection{Związek błędu obliczeń z wariantem algorytmu eliminacji Gaussa}
 \begin{hip}
 	Dla dowolnego ustalonego rozmiaru macierzy błąd uzyskanego wyniku metody Gaussa w kolejnych wersjach (G,PG,FG) maleje.\label{hip:2}
 \end{hip}
+Przeanalizujmy wykres \ref{Rys1b}. Prezentuje on zestawienie błędu bezwzględnego rozwiązania układu równań względem wektora $X$ dla typów danych float i double. W przypadku obu typów danych najmniej dokładny jest wariant G (różnice między nimi są efektem zastosowanej precyzji w tych typach). W przypadku wariantów PG i FG można zauważyć iż mają one bardzo zbliżoną dokładność z małą przewagą wariantu PG - jego dodatkowym atutem jest większa stabliność wyników. W sytuacjach gdy wariant G i PG mają problemy z bardziej skomplikowanymi równaniami (charakterystyczne wzrosty na wykresie) - PG radzi sobie zdecydowanie lepiej.
 \begin{wn}
-	Coś...\label{wn:2}
+	Hipoteza okazuje się być prawdziwa. Wariant PG zapewnia największą dokładność i stabilność wyników względem nieco gorszego FG oraz G, w którym różnica błędu sięga nawet dwóch rzędów wielkości. Jednakże biorąc pod uwagę \ref{wn:1} najbardziej opłacalnym w kategorii dokładność/wydajność okazuje się być wariant PG jako iż różnice błędu między nim a pełnym wyborem zdają się być akceptowalne gdy weźmiemy pod uwagę znacznie szybszy czas działania.\label{wn:2}
 \end{wn}
 \subsection{Poprawność własnej arytmetyki}
 \begin{hip}
 	Użycie własnej arytmetyki na ułamkach zapewnia bezbłędne wyniki niezależnie od wariantu metody Gaussa i rozmiaru macierzy.\label{hip:3}
 \end{hip}
+Przeanalizujmy następującą tabelę:\\
+\begin{table}
+	\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| }
+	\hline
+	\multicolumn{10}{ |c| }{Fractial - porównanie} \\
+	n & \multicolumn{3}{|c|}{Błąd bezwzględny} & \multicolumn{3}{|c|}{Czas wykonania} & \multicolumn{3}{|c|}{Ilość prób}\\
+	\hline
+	Wariant -> & G & PG & FG & G & PG & FG & \multicolumn{3}{|c|}{}\\
+	\hline
+	10 & 0 & 0 & 0 & 2.39034797 & 2.70733242 & 2.62618003 & \multicolumn{3}{|c|}{100} \\
+	20 & 0 & 0 & 0 & 26.08455804 & 28.1878754 & 37.95241776 &\multicolumn{3}{|c|}{25} \\
+	50 & 0 & 0 & 0 & 1353.7187555 & 1418.31329225 & 1935.74870875 & \multicolumn{3}{|c|}{4} \\
+	100 & 0 & 0 & 0 & 33360.40558 & 34285.387315 & 46668.033684 & \multicolumn{3}{|c|}{1} \\
+	130 & 0 & 0 & 0 & 115763.860973 & 118493.372512 & 160113.679247 & \multicolumn{3}{|c|}{1} \\
+	150 & 0 & 0 & 0 & 228794.993101 & 234503.568338 &  315739.697225 & \multicolumn{3}{|c|}{1} \\
+	\hline
+\end{tabular}
+\end{table}
+Prezentuje ona wyniki z użyciem własnej arytmetyki dla wszystkich wariantów algorytmu.
+Obliczenia zostały wykonane na macierzach o rozmiarze $n$ w przedziale $\{10,20,...,150\}$ z racji ograniczeń sprzętowych. Rozpatrując wyniki testów, można dość do wniosku, że użycie własnej artymetyki całkowicie eliminuje błąd obliczeń. Jest to spowodowane charakterystyką typu BigInteger. Teoretycznie, typ ten nie ma żadnego limitu przechowywanych danych - w zależności od potrzeb zajmuje potrzebną ilość pamięci w komputerze. Jedynym ogranicznikiem w przypadku typu BigInteger jest pamięć naszego komputera. Dodając do tego sposób przechowywania ułamków ($\frac{licznik}{mianownik}$) jesteśmy w stanie wykonywać bardzo skomplikowane równania bez utraty precyzji.
 \begin{wn}
-	Coś...\label{wn:3}
+	Hipoteza 3 okazuje się być prawdziwa. Użycie własnej arytmetyki zapewnia teoretycznie największą możliwą dokładność przechowywanych danych w porównaniu do zwykłych typów zmiennoprzecinkowych. Dzięki temu, wszelkie operacje wykonywane na typie Fraction są wykonywane z dokładnością równą 0\label{wn:3}
 \end{wn}
 \section{Pytania}
 \subsection{Dokładność obliczeń (typ podwójnej precyzji)}
