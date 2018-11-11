@@ -44,20 +44,41 @@ Dodatkowo, obliczenia zostały wykonane, używając trzech różny typów reprez
 $\text{Jako współczynniki macierzy } A \text{ oraz wektora } X \text{ zostały wylosowane liczby zmiennoprzecinkowe z przedziału: }$\\
 $\{\frac{-2^{16}}{2^{16}},\frac{2^{16}-1}{2^{16}}\}$ Następnie wektor $B$ został wyliczony wedługo wzoru $B = A\cdot X$.
 Macierz $A$ i wektor $B$ zostają podane jako parametry do rozwiązania układu równań, wektor $X$ zaś pozostawiamy jako rozwiązanie wzorcowe, za pomocą którego obliczamy błąd wykonanego algorytmu.\\\\
-Program do realizacji testów został wykonany w języku \textit{Java}. Typ danych \textit{TC} został zaimplementowany za pomocą wbudowanego typu całkowitego \emph{BigInteger}. Testy zostały wykonane na macierzach o rozmiarze ${10,20,...,800}$ (float,double) ${10,20...,150}$ (fraction) w ilości prób danych wzorem:\\
-$n = 100\cdot m[m_s[max-i]-1]/m[i]$, gdzie $m$ = tablica wielkości macierzy, $s$ = indeks w tablicy $m$, $max$ = ostatnia wartość w tablicy $m$
-\\
-lub
-\\
-w ilości prób malejącej, wraz z wykonywaniem testów na coraz to większych macierzach.
+Program do realizacji testów został wykonany w języku \textit{Java}. Typ danych \textit{TC} został zaimplementowany za pomocą wbudowanego typu całkowitego \emph{BigInteger}. Testy zostały wykonane na macierzach o rozmiarze $\{10,20,...,800\}$ (float,double) $\{10,20...,150\}$ (fraction) 
+w ilości prób malejącej, wraz z wykonywaniem testów na coraz to większych macierzach. Wyniki zostały zagregowane za pomocą średniej arytmetycznej.
 \section{Analiza hipotez}
 Rozważmy następujące wykresy (Rysunek\ref{rys})
+\begin{figure}[h]
+	\caption{Wykresy reprezentujące błąd bezwzględny oraz czas wykonania dla różnych typów danych oraz różnych wariantów algorytmu\label{rys}}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{float_double_czas.png}
+		\caption{ \label{Rys1a}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{float_double_blad.png}
+		\caption{  \label{Rys1b}}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{float_roznica_czas.png}
+		\caption{ \label{Rys1c}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{fraction_czas.png}
+		\caption{ \label{Rys1d}}
+	\end{subfigure}
+\end{figure}
 Prezentują one błąd bezwzględny wartości w skali logarytmicznej (chyba że jest podane inaczej), wyliczonej za pomocą wcześniej wspomnianych algorytmów wobec wektora wzorcowego $X$.\\
-Cześć z nich prezentuje również czas wykonania algorytmu podany w milisekundach.
+Część z nich prezentuje również czas wykonania algorytmu podany w milisekundach.
 \subsection{Związek czasu wykonywania z wariantem algorytmu eliminacji Gaussa}
 \begin{hip}
 	Dla dowolnego ustalone rozmiaru macierzy czas działania metody Gaussa w kolejnych wersjach (G,PG,FG) rośnie.\label{hip:1}
 \end{hip}
+Przeanalizujmy wykresy \ref{Rys1a} oraz \ref{Rys1d}. Zaprezentowano na nich porównanie czasu wykonania w zależności od wybranego typu danych oraz wariantu algorytmu. Niezależnie od typu danych można zauważyć pewną tendencję.\\
+Po pierwsze, wraz z wzrostem rozmiaru macierzy użytej do rozwiązania układu równań, można zauważyć znaczący wzrost czasu wykonywania dla wariantu FG względem wariantów G i PG. Wykonując operacje na małych macierzach proces rozwiązywania nie jest na tyle skomplikowany by w jakikolwiek sposób wpływać na wydajność.
+Drugą interesującą rzeczą natomiast jest, brak znaczących różnic między wariantem G i PG. By bardziej uwidocznić to zjawisko przeanalizujmy wykres \ref{Rys1c}, który prezentuje różnicę między cześciowym wyborem elementu podstawowego a brakiem wyboru w przypadku typu danych float. Wynikają z niego dwie rzeczy: różnica między wykonywaniem tych dwóch argumentów jest praktycznie nieznacząca (zaledwie kilka milisekund). Drugą rzeczą jest natomiast fakt, że wariant PG zdaje się być nieznacznie wolniejszy od wariantu G (Wraz z wzrostem rozmiaru macierzy okazuje sie w niektorych wypadkach nawet wydajniejszy niz standardowy algorytm Gaussa)
 \begin{wn}
 	Coś...\label{wn:1}
 \end{wn}
@@ -68,7 +89,7 @@ Cześć z nich prezentuje również czas wykonania algorytmu podany w milisekund
 \begin{wn}
 	Coś...\label{wn:2}
 \end{wn}
-\subsection{Poprawność i wydajność własnej arytmetyki}
+\subsection{Poprawność własnej arytmetyki}
 \begin{hip}
 	Użycie własnej arytmetyki na ułamkach zapewnia bezbłędne wyniki niezależnie od wariantu metody Gaussa i rozmiaru macierzy.\label{hip:3}
 \end{hip}
@@ -96,7 +117,9 @@ Cześć z nich prezentuje również czas wykonania algorytmu podany w milisekund
 	\begin{tabular}{| l | l | l |}
 		\hline
 		\textbf{Dawid Bińkuś} & \textbf{Oskar Bir} & \textbf{Mateusz Małecki} \\ \hline
-		Ten coś robił & Ten też coś robił & A ten to w ogóle bardzo dużo \\ \hline
+		Struktura projektu & Ten też coś robił & A ten to w ogóle bardzo dużo \\ \hline
+		Przygotowanie sprawozdania & Coś & Coś\\ \hline
+		Implementacja algorytmu Gaussa w wariantach PG i FG & Coś & Coś \\ \hline
 		
 		
 	\end{tabular}

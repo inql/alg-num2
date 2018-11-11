@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 16:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.10)  11 NOV 2018 18:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1102,48 +1102,81 @@ i im-ple-men-ta-cji al-go-rytmu eli-mi-na-cji Gaussa,
  []
 
 
-Overfull \hbox (43.02795pt too wide) in paragraph at lines 44--53
+Overfull \hbox (43.02795pt too wide) in paragraph at lines 44--49
 $[]\OML/lmm/m/it/10 A[]X[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--53
+Underfull \hbox (badness 10000) in paragraph at lines 44--49
 
  []
 
+<float_double_czas.png, id=4, 807.7678pt x 487.06969pt>
+File: float_double_czas.png Graphic file (type png)
+<use float_double_czas.png>
+Package pdftex.def Info: float_double_czas.png  used on input line 54.
+(pdftex.def)             Requested size: 219.25706pt x 132.20175pt.
+<float_double_blad.png, id=5, 788.9475pt x 442.65375pt>
+File: float_double_blad.png Graphic file (type png)
+<use float_double_blad.png>
+Package pdftex.def Info: float_double_blad.png  used on input line 59.
+(pdftex.def)             Requested size: 219.25706pt x 123.01685pt.
 
-LaTeX Warning: Reference `rys' on page 1 undefined on input line 54.
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 53--62
+[]$[]$  $[]$ 
+ []
+
+<float_roznica_czas.png, id=6, 455.45157pt x 255.95625pt>
+File: float_roznica_czas.png Graphic file (type png)
+<use float_roznica_czas.png>
+Package pdftex.def Info: float_roznica_czas.png  used on input line 64.
+(pdftex.def)             Requested size: 219.25706pt x 123.22081pt.
+<fraction_czas.png, id=7, 825.83531pt x 463.7325pt>
+File: fraction_czas.png Graphic file (type png)
+<use fraction_czas.png>
+Package pdftex.def Info: fraction_czas.png  used on input line 69.
+(pdftex.def)             Requested size: 219.25706pt x 123.11494pt.
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 63--72
+[]$[]$  $[]$ 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./sprawozdanie.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (49.94226pt too wide) in paragraph at lines 117--126
+ [] 
+ []
 
-LaTeX Warning: There were undefined references.
-
- ) 
+[2 <./float_double_czas.png (PNG copy)> <./float_double_blad.png (PNG copy)> <.
+/float_roznica_czas.png (PNG copy)> <./fraction_czas.png (PNG copy)>]
+(./sprawozdanie.aux) ) 
 Here is how much of TeX's memory you used:
- 24468 strings out of 492982
- 608146 string characters out of 6134895
- 783490 words of memory out of 5000000
- 27591 multiletter control sequences out of 15000+600000
- 57444 words of font info for 44 fonts, out of 8000000 for 9000
+ 24508 strings out of 492982
+ 608899 string characters out of 6134895
+ 785490 words of memory out of 5000000
+ 27625 multiletter control sequences out of 15000+600000
+ 60441 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,96p,729b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm
-/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
-7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmsy7.pfb>
-Output written on sprawozdanie.pdf (2 pages, 213492 bytes).
+ 62i,9n,96p,729b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/shar
+e/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ma
+thsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/f
+onts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmsy7.pfb>
+Output written on sprawozdanie.pdf (2 pages, 395133 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
+ 72 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
